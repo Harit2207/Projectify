@@ -1,3 +1,4 @@
+import { env } from '../../config/env.js';
 import nodemailer from 'nodemailer';
 import { logger } from '../logger/logger.js';
 
@@ -185,7 +186,7 @@ export function sendPasswordResetEmail({ to, resetUrl, userName = 'User' }) {
 
 // 2. Welcome Email on Signup
 export function sendWelcomeEmail({ to, userName = 'User' }) {
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = env.clientUrl || (env.isProduction ? 'https://projectify-steel.vercel.app' : 'http://localhost:5173');
   const content = `
     <p>Hi ${userName},</p>
     <p>Welcome to <strong>Projectify</strong>! We're thrilled to have you onboard.</p>
@@ -223,7 +224,7 @@ export function sendWorkspaceInviteEmail({
   inviterName = 'A teammate',
   role = 'member',
 }) {
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = env.clientUrl || (env.isProduction ? 'https://projectify-steel.vercel.app' : 'http://localhost:5173');
   const content = `
     <p>Hi ${userName},</p>
     <p><strong>${inviterName}</strong> has invited you to join the <strong>${workspaceName}</strong> workspace as a <strong>${role}</strong> on Projectify.</p>
@@ -260,7 +261,7 @@ export function sendTaskAssignmentEmail({
   assignerName = 'A team member',
   priority = 'medium',
 }) {
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = env.clientUrl || (env.isProduction ? 'https://projectify-steel.vercel.app' : 'http://localhost:5173');
   const content = `
     <p>Hi ${userName},</p>
     <p><strong>${assignerName}</strong> has assigned a task to you in <strong>${projectName}</strong>.</p>

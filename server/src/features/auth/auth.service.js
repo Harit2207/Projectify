@@ -1,3 +1,4 @@
+import { env } from '../../config/env.js';
 import crypto from 'crypto';
 import { User } from './auth.model.js';
 import {
@@ -113,7 +114,7 @@ export async function forgotPassword(email) {
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
 
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  const clientUrl = env.clientUrl || (env.isProduction ? 'https://projectify-steel.vercel.app' : 'http://localhost:5173');
   const resetUrl = `${clientUrl}/reset-password?token=${resetToken}`;
 
   await sendPasswordResetEmail({
