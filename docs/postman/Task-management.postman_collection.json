@@ -1,0 +1,4302 @@
+{
+  "info": {
+    "_postman_id": "22c46ab8-aa13-44b1-ab23-1100e62d9fad",
+    "name": "Task-management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44963830",
+    "_collection_link": "https://go.postman.co/collection/44963830-22c46ab8-aa13-44b1-ab23-1100e62d9fad?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "signUp",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Anita Singh\",\r\n  \"email\": \"singh@gmail.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \r\n  \"email\": \"anita@example.com\",\r\n  \"password\": \"Password@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getMe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getMe",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/auth/me",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "8ceb1d4a-2ca3-4790-9076-b06b52253257"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "249"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"f9-Et6eIExuG/V06hwrm0Z1jM0yFQ8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 10:12:56 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"user\": {\n            \"id\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"name\": \"Siddhi Patil\",\n            \"email\": \"anita@example.com\",\n            \"avatar\": null,\n            \"isVerified\": false,\n            \"lastLoginAt\": \"2026-06-13T10:05:52.248Z\",\n            \"createdAt\": \"2026-06-13T10:02:20.318Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "logout",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/auth/logout",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "b074835e-ee73-42f5-aa5a-9c303eed985a"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": "refreshToken=; Path=/api/auth/refresh; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "64"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"40-JIdvWyxZ7MqXNpNk0+ulk5X9rXE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 10:15:15 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully\",\n    \"data\": null\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "workshop",
+      "item": [
+        {
+          "name": "projects",
+          "item": [
+            {
+              "name": "epic",
+              "item": [
+                {
+                  "name": "create",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"Authentication Module\",\r\n  \"description\": \"Complete auth implementation\",\r\n  \"color\": \"#8B5CF6\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects",
+                        "6a2e93375fb54c10a4516aed",
+                        "epics"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "create",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"title\": \"Authentication Module\",\r\n  \"description\": \"Complete auth implementation\",\r\n  \"color\": \"#8B5CF6\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "5000",
+                          "path": [
+                            "api",
+                            "workspaces",
+                            "6a2d51748249d4dc6ec116d2",
+                            "projects",
+                            "6a2e93375fb54c10a4516aed",
+                            "epics"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "http://localhost:5173"
+                        },
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "X-Request-Id",
+                          "value": "a5922174-1e01-4510-abf2-9e76336705fa"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "443"
+                        },
+                        {
+                          "key": "ETag",
+                          "value": "W/\"1bb-BPx9CiYZk3JlBNnIwDQEJVzdFQ4\""
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Sun, 14 Jun 2026 11:44:22 GMT"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"message\": \"Epic created\",\n    \"data\": {\n        \"epic\": {\n            \"title\": \"Authentication Module\",\n            \"description\": \"Complete auth implementation\",\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"status\": \"planned\",\n            \"color\": \"#8B5CF6\",\n            \"startDate\": null,\n            \"endDate\": null,\n            \"_id\": \"6a2e94165fb54c10a4516aee\",\n            \"createdAt\": \"2026-06-14T11:44:22.928Z\",\n            \"updatedAt\": \"2026-06-14T11:44:22.928Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "get",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects",
+                        "6a2e93375fb54c10a4516aed",
+                        "epics"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "get",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "5000",
+                          "path": [
+                            "api",
+                            "workspaces",
+                            "6a2d51748249d4dc6ec116d2",
+                            "projects",
+                            "6a2e93375fb54c10a4516aed",
+                            "epics"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "http://localhost:5173"
+                        },
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "X-Request-Id",
+                          "value": "a1fd5ae5-22ce-45ec-9bb6-7155327746f1"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "569"
+                        },
+                        {
+                          "key": "ETag",
+                          "value": "W/\"239-zwaFLQ8OGFVAk4DJCAVBNcJ9zYU\""
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Sun, 14 Jun 2026 12:31:11 GMT"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"epics\": [\n            {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication Module\",\n                \"description\": \"Complete auth implementation\",\n                \"projectId\": \"6a2e93375fb54c10a4516aed\",\n                \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n                \"createdBy\": {\n                    \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                    \"name\": \"Siddhi Patil\",\n                    \"avatar\": null\n                },\n                \"status\": \"planned\",\n                \"color\": \"#8B5CF6\",\n                \"startDate\": null,\n                \"endDate\": null,\n                \"createdAt\": \"2026-06-14T11:44:22.928Z\",\n                \"updatedAt\": \"2026-06-14T11:44:22.928Z\",\n                \"__v\": 0,\n                \"taskStats\": {\n                    \"_id\": \"6a2e94165fb54c10a4516aee\",\n                    \"total\": 1,\n                    \"completed\": 0\n                },\n                \"progress\": 0\n            }\n        ]\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "update",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"title\": \"Authentication & Security\",\r\n  \"color\": \"#EC4899\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics/6a2e94165fb54c10a4516aee",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects",
+                        "6a2e93375fb54c10a4516aed",
+                        "epics",
+                        "6a2e94165fb54c10a4516aee"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "update",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"title\": \"Authentication & Security\",\r\n  \"color\": \"#EC4899\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed/epics/6a2e94165fb54c10a4516aee",
+                          "protocol": "http",
+                          "host": [
+                            "localhost"
+                          ],
+                          "port": "5000",
+                          "path": [
+                            "api",
+                            "workspaces",
+                            "6a2d51748249d4dc6ec116d2",
+                            "projects",
+                            "6a2e93375fb54c10a4516aed",
+                            "epics",
+                            "6a2e94165fb54c10a4516aee"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                        },
+                        {
+                          "key": "Cross-Origin-Opener-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Cross-Origin-Resource-Policy",
+                          "value": "same-origin"
+                        },
+                        {
+                          "key": "Origin-Agent-Cluster",
+                          "value": "?1"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "no-referrer"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-DNS-Prefetch-Control",
+                          "value": "off"
+                        },
+                        {
+                          "key": "X-Download-Options",
+                          "value": "noopen"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "SAMEORIGIN"
+                        },
+                        {
+                          "key": "X-Permitted-Cross-Domain-Policies",
+                          "value": "none"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "0"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "http://localhost:5173"
+                        },
+                        {
+                          "key": "Vary",
+                          "value": "Origin"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "true"
+                        },
+                        {
+                          "key": "X-Request-Id",
+                          "value": "fb40249b-3692-4c19-a63c-b37b7a70a86e"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json; charset=utf-8"
+                        },
+                        {
+                          "key": "Content-Length",
+                          "value": "447"
+                        },
+                        {
+                          "key": "ETag",
+                          "value": "W/\"1bf-777iJ2T4NE20qbxUHzMCfC3XvgU\""
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Sun, 14 Jun 2026 12:33:35 GMT"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "keep-alive"
+                        },
+                        {
+                          "key": "Keep-Alive",
+                          "value": "timeout=5"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"success\": true,\n    \"message\": \"Epic updated\",\n    \"data\": {\n        \"epic\": {\n            \"_id\": \"6a2e94165fb54c10a4516aee\",\n            \"title\": \"Authentication & Security\",\n            \"description\": \"Complete auth implementation\",\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"status\": \"planned\",\n            \"color\": \"#EC4899\",\n            \"startDate\": null,\n            \"endDate\": null,\n            \"createdAt\": \"2026-06-14T11:44:22.928Z\",\n            \"updatedAt\": \"2026-06-14T12:33:35.513Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Backend API\",\r\n  \"description\": \"Main backend development\",\r\n  \"emoji\": \"🚀\",\r\n  \"color\": \"#3B82F6\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "projects"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "create",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"Backend API\",\r\n  \"description\": \"Main backend development\",\r\n  \"emoji\": \"🚀\",\r\n  \"color\": \"#3B82F6\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                    },
+                    {
+                      "key": "Cross-Origin-Opener-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Cross-Origin-Resource-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Origin-Agent-Cluster",
+                      "value": "?1"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-DNS-Prefetch-Control",
+                      "value": "off"
+                    },
+                    {
+                      "key": "X-Download-Options",
+                      "value": "noopen"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN"
+                    },
+                    {
+                      "key": "X-Permitted-Cross-Domain-Policies",
+                      "value": "none"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "http://localhost:5173"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "true"
+                    },
+                    {
+                      "key": "X-Request-Id",
+                      "value": "be915ff8-bcb3-4afe-bde3-e175781cfaa7"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "359"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"167-vi6MkrvZE2mAm3WiTEo2jWew9IA\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 14 Jun 2026 11:40:39 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Project created\",\n    \"data\": {\n        \"project\": {\n            \"name\": \"Backend API\",\n            \"description\": \"Main backend development\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"status\": \"active\",\n            \"emoji\": \"🚀\",\n            \"_id\": \"6a2e93375fb54c10a4516aed\",\n            \"createdAt\": \"2026-06-14T11:40:39.502Z\",\n            \"updatedAt\": \"2026-06-14T11:40:39.502Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "getAll",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "projects"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "getAll",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                    },
+                    {
+                      "key": "Cross-Origin-Opener-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Cross-Origin-Resource-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Origin-Agent-Cluster",
+                      "value": "?1"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-DNS-Prefetch-Control",
+                      "value": "off"
+                    },
+                    {
+                      "key": "X-Download-Options",
+                      "value": "noopen"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN"
+                    },
+                    {
+                      "key": "X-Permitted-Cross-Domain-Policies",
+                      "value": "none"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "http://localhost:5173"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "true"
+                    },
+                    {
+                      "key": "X-Request-Id",
+                      "value": "4df34097-54a2-4a29-affe-64188ba389fa"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "398"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"18e-MsHsn+AXdpOwGGc/QJAic/1+cZQ\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 14 Jun 2026 12:20:05 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"projects\": [\n            {\n                \"_id\": \"6a2e93375fb54c10a4516aed\",\n                \"name\": \"Backend API\",\n                \"description\": \"Main backend development\",\n                \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n                \"createdBy\": {\n                    \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                    \"name\": \"Siddhi Patil\",\n                    \"avatar\": null\n                },\n                \"status\": \"active\",\n                \"emoji\": \"🚀\",\n                \"createdAt\": \"2026-06-14T11:40:39.502Z\",\n                \"updatedAt\": \"2026-06-14T11:40:39.502Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Backend API v2\",\r\n  \"emoji\": \"🔥\",\r\n  \"color\": \"#EF4444\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "projects",
+                    "6a2e93375fb54c10a4516aed"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "update",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"Backend API v2\",\r\n  \"emoji\": \"🔥\",\r\n  \"color\": \"#EF4444\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects",
+                        "6a2e93375fb54c10a4516aed"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                    },
+                    {
+                      "key": "Cross-Origin-Opener-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Cross-Origin-Resource-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Origin-Agent-Cluster",
+                      "value": "?1"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-DNS-Prefetch-Control",
+                      "value": "off"
+                    },
+                    {
+                      "key": "X-Download-Options",
+                      "value": "noopen"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN"
+                    },
+                    {
+                      "key": "X-Permitted-Cross-Domain-Policies",
+                      "value": "none"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "http://localhost:5173"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "true"
+                    },
+                    {
+                      "key": "X-Request-Id",
+                      "value": "3f212f63-9765-404b-9b16-0e9a2ca995c4"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "362"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"16a-7ERGUtF/wxlwP70jHz9vmTeGla8\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 14 Jun 2026 12:27:03 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Project updated\",\n    \"data\": {\n        \"project\": {\n            \"_id\": \"6a2e93375fb54c10a4516aed\",\n            \"name\": \"Backend API v2\",\n            \"description\": \"Main backend development\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"status\": \"active\",\n            \"emoji\": \"🔥\",\n            \"createdAt\": \"2026-06-14T11:40:39.502Z\",\n            \"updatedAt\": \"2026-06-14T12:27:03.525Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "getSingle",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Backend API\",\r\n  \"description\": \"Main backend development\",\r\n  \"emoji\": \"🚀\",\r\n  \"color\": \"#3B82F6\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "projects",
+                    "6a2e93375fb54c10a4516aed"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "getSingle",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"Backend API\",\r\n  \"description\": \"Main backend development\",\r\n  \"emoji\": \"🚀\",\r\n  \"color\": \"#3B82F6\"\r\n}"
+                    },
+                    "url": {
+                      "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/6a2e93375fb54c10a4516aed",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "5000",
+                      "path": [
+                        "api",
+                        "workspaces",
+                        "6a2d51748249d4dc6ec116d2",
+                        "projects",
+                        "6a2e93375fb54c10a4516aed"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                    },
+                    {
+                      "key": "Cross-Origin-Opener-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Cross-Origin-Resource-Policy",
+                      "value": "same-origin"
+                    },
+                    {
+                      "key": "Origin-Agent-Cluster",
+                      "value": "?1"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "no-referrer"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000; includeSubDomains"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-DNS-Prefetch-Control",
+                      "value": "off"
+                    },
+                    {
+                      "key": "X-Download-Options",
+                      "value": "noopen"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "SAMEORIGIN"
+                    },
+                    {
+                      "key": "X-Permitted-Cross-Domain-Policies",
+                      "value": "none"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "http://localhost:5173"
+                    },
+                    {
+                      "key": "Vary",
+                      "value": "Origin"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "true"
+                    },
+                    {
+                      "key": "X-Request-Id",
+                      "value": "8246987c-2c77-4f24-9315-505934d8eb11"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "395"
+                    },
+                    {
+                      "key": "ETag",
+                      "value": "W/\"18b-QSXZ7nRBVT9v176a4VHc0n2i8lA\""
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 14 Jun 2026 12:26:04 GMT"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"project\": {\n            \"_id\": \"6a2e93375fb54c10a4516aed\",\n            \"name\": \"Backend API\",\n            \"description\": \"Main backend development\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"createdBy\": {\n                \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                \"name\": \"Siddhi Patil\",\n                \"avatar\": null\n            },\n            \"status\": \"active\",\n            \"emoji\": \"🚀\",\n            \"createdAt\": \"2026-06-14T11:40:39.502Z\",\n            \"updatedAt\": \"2026-06-14T11:40:39.502Z\",\n            \"__v\": 0\n        }\n    }\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Task Manager1\",\r\n  \"description\": \"Workspace for managing all projects\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Task Manager\",\r\n  \"description\": \"Workspace for managing all projects\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "5ebedc25-eb88-41fa-b3c6-15c4a6761c4c"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "443"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1bb-hKTY2UYD7LV7/GHpw7bo4QRig+A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 10:35:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Workspace created\",\n    \"data\": {\n        \"workspace\": {\n            \"name\": \"Task Manager\",\n            \"slug\": \"task-manager-l05q\",\n            \"description\": \"Workspace for managing all projects\",\n            \"logo\": null,\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"members\": [\n                {\n                    \"userId\": \"6a2d2aacaaf67b290e7d21dc\",\n                    \"role\": \"owner\",\n                    \"joinedAt\": \"2026-06-13T10:35:34.067Z\"\n                }\n            ],\n            \"_id\": \"6a2d32768a4861db57df29a9\",\n            \"createdAt\": \"2026-06-13T10:35:34.071Z\",\n            \"updatedAt\": \"2026-06-13T10:35:34.071Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getWorkspace",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Task Manager\",\r\n  \"description\": \"Workspace for managing all projects\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    ""
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "5ebedc25-eb88-41fa-b3c6-15c4a6761c4c"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "443"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1bb-hKTY2UYD7LV7/GHpw7bo4QRig+A\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 10:35:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Workspace created\",\n    \"data\": {\n        \"workspace\": {\n            \"name\": \"Task Manager\",\n            \"slug\": \"task-manager-l05q\",\n            \"description\": \"Workspace for managing all projects\",\n            \"logo\": null,\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"members\": [\n                {\n                    \"userId\": \"6a2d2aacaaf67b290e7d21dc\",\n                    \"role\": \"owner\",\n                    \"joinedAt\": \"2026-06-13T10:35:34.067Z\"\n                }\n            ],\n            \"_id\": \"6a2d32768a4861db57df29a9\",\n            \"createdAt\": \"2026-06-13T10:35:34.071Z\",\n            \"updatedAt\": \"2026-06-13T10:35:34.071Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            },
+            {
+              "name": "getWorkspace",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "41fdeaaa-c37f-4617-87cd-00fec67ba3b1"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "422"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1a6-VIf+ub0AxLs3+mDdu8vYXjYLg0o\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 10:37:46 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"workspaces\": [\n            {\n                \"_id\": \"6a2d32768a4861db57df29a9\",\n                \"name\": \"Task Manager\",\n                \"slug\": \"task-manager-l05q\",\n                \"description\": \"Workspace for managing all projects\",\n                \"logo\": null,\n                \"members\": [\n                    {\n                        \"userId\": {\n                            \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                            \"name\": \"Siddhi Patil\",\n                            \"email\": \"anita@example.com\",\n                            \"avatar\": null\n                        },\n                        \"role\": \"owner\",\n                        \"joinedAt\": \"2026-06-13T10:35:34.067Z\"\n                    }\n                ],\n                \"createdAt\": \"2026-06-13T10:35:34.071Z\"\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "invite",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"siddhi@example.com\",\r\n    \"role\": \"member\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/members/invite",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "members",
+                "invite"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "invite",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"siddhi@example.com\",\r\n    \"role\": \"member\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/members/invite",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "members",
+                    "invite"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "db37852e-7aa6-4c8b-9dd5-b06bfafd3fea"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "315"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"13b-F7crCi7RA5nd1BB6rN2CoLo9+Rw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 13 Jun 2026 12:48:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Member invited successfully\",\n    \"data\": {\n        \"member\": {\n            \"userId\": {\n                \"id\": \"6a2d262525393e7da054e151\",\n                \"name\": \"Siddhi Patil\",\n                \"email\": \"siddhi@example.com\",\n                \"avatar\": null,\n                \"isVerified\": false,\n                \"lastLoginAt\": null,\n                \"createdAt\": \"2026-06-13T09:43:01.372Z\"\n            },\n            \"role\": \"member\",\n            \"joinedAt\": \"2026-06-13T12:48:40.534Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "updateRole",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"role\": \"admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/members/6a2d262525393e7da054e151/role",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "members",
+                "6a2d262525393e7da054e151",
+                "role"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "updateRole",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"role\": \"admin\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/members/6a2d262525393e7da054e151/role",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "members",
+                    "6a2d262525393e7da054e151",
+                    "role"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "5ece4c6b-176d-473a-9a48-1ae4044b3154"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "150"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"96-YXtj7VhclgvMU80O3cCk/GJ0vgo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 11:22:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Role updated\",\n    \"data\": {\n        \"member\": {\n            \"userId\": \"6a2d262525393e7da054e151\",\n            \"role\": \"admin\",\n            \"joinedAt\": \"2026-06-13T12:48:40.520Z\"\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "task",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Implement JWT Authentication\",\r\n  \"description\": \"Add access and refresh tokens\",\r\n  \"status\": \"todo\",\r\n  \"priority\": \"high\",\r\n  \"assignees\": [\r\n    \"6a2d262525393e7da054e151\"\r\n  ],\r\n  \"epicId\": \"6a2e94165fb54c10a4516aee\",\r\n  \"dueDate\": \"2026-06-30T00:00:00.000Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "6a2e93375fb54c10a4516aed",
+                "tasks"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Implement JWT Authentication\",\r\n  \"description\": \"Add access and refresh tokens\",\r\n  \"status\": \"todo\",\r\n  \"priority\": \"high\",\r\n  \"assignees\": [\r\n    \"6a2d262525393e7da054e151\"\r\n  ],\r\n  \"epicId\": \"6a2e94165fb54c10a4516aee\",\r\n  \"dueDate\": \"2026-06-30T00:00:00.000Z\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "6a2e93375fb54c10a4516aed",
+                    "tasks"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "16784eeb-842c-4287-9ce0-5d2521b98bef"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "767"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2ff-Kof4uudMaT8gDSJ50QKJF9pNZjU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 12:17:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task created\",\n    \"data\": {\n        \"task\": {\n            \"title\": \"Implement JWT Authentication\",\n            \"description\": \"Add access and refresh tokens\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"position\": 1000,\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication Module\",\n                \"color\": \"#8B5CF6\"\n            },\n            \"createdBy\": {\n                \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                \"name\": \"Siddhi Patil\",\n                \"avatar\": null\n            },\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d262525393e7da054e151\",\n                    \"name\": \"Siddhi Patil\",\n                    \"email\": \"siddhi@example.com\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n            \"labels\": [],\n            \"completedAt\": null,\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"checklist\": [],\n            \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n            \"updatedAt\": \"2026-06-14T12:17:29.128Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "6a2e93375fb54c10a4516aed",
+                "tasks"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "6a2e93375fb54c10a4516aed",
+                    "tasks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "40c8c041-0795-4a1e-9849-154a065dee8e"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "824"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"338-lf848YG90UZB4XWQqCtaJiMsosA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 12:41:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"title\": \"Implement JWT Authentication\",\n            \"description\": \"Add access and refresh tokens\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"position\": 1000,\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication & Security\",\n                \"color\": \"#EC4899\"\n            },\n            \"createdBy\": {\n                \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                \"name\": \"Siddhi Patil\",\n                \"avatar\": null\n            },\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d262525393e7da054e151\",\n                    \"name\": \"Siddhi Patil\",\n                    \"email\": \"siddhi@example.com\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n            \"labels\": [],\n            \"completedAt\": null,\n            \"checklist\": [],\n            \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n            \"updatedAt\": \"2026-06-14T12:17:29.128Z\",\n            \"__v\": 0\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"limit\": 50,\n        \"total\": 1,\n        \"totalPages\": 1,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "groupTask",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks/grouped",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "6a2e93375fb54c10a4516aed",
+                "tasks",
+                "grouped"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "groupTask",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/6a2e93375fb54c10a4516aed/tasks/grouped",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "6a2e93375fb54c10a4516aed",
+                    "tasks",
+                    "grouped"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "cebc6445-07ee-444f-a711-909763038256"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "833"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"341-mHoQKQKmVmem+tx9ijRlqoemlXU\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 14:37:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"tasks\": {\n            \"backlog\": [],\n            \"todo\": [\n                {\n                    \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n                    \"title\": \"Implement JWT Authentication\",\n                    \"description\": \"Add access and refresh tokens\",\n                    \"status\": \"todo\",\n                    \"priority\": \"high\",\n                    \"position\": 1000,\n                    \"projectId\": \"6a2e93375fb54c10a4516aed\",\n                    \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n                    \"epicId\": {\n                        \"_id\": \"6a2e94165fb54c10a4516aee\",\n                        \"title\": \"Authentication & Security\",\n                        \"color\": \"#EC4899\"\n                    },\n                    \"createdBy\": {\n                        \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                        \"name\": \"Siddhi Patil\",\n                        \"avatar\": null\n                    },\n                    \"assignees\": [\n                        {\n                            \"_id\": \"6a2d262525393e7da054e151\",\n                            \"name\": \"Siddhi Patil\",\n                            \"email\": \"siddhi@example.com\",\n                            \"avatar\": null\n                        }\n                    ],\n                    \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n                    \"labels\": [],\n                    \"completedAt\": null,\n                    \"checklist\": [],\n                    \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n                    \"updatedAt\": \"2026-06-14T12:17:29.128Z\",\n                    \"__v\": 0\n                }\n            ],\n            \"in_progress\": [],\n            \"in_review\": [],\n            \"done\": []\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "getSingle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/6a2ec07ab269e8e303d5a2f8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "tasks",
+                "6a2ec07ab269e8e303d5a2f8"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "getSingle",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/6a2e9bd95c05d95b21c6b287",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "6a2e9bd95c05d95b21c6b287"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "0f754eac-0747-45cc-9c61-264b56ac53e5"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "766"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2fe-ASElgXgpjNXUsEYTKgxA/9VIxak\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 14:42:38 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"task\": {\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"title\": \"Implement JWT Authentication\",\n            \"description\": \"Add access and refresh tokens\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"position\": 1000,\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication & Security\",\n                \"color\": \"#EC4899\"\n            },\n            \"createdBy\": {\n                \"_id\": \"6a2d2aacaaf67b290e7d21dc\",\n                \"name\": \"Siddhi Patil\",\n                \"avatar\": null\n            },\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d262525393e7da054e151\",\n                    \"name\": \"Siddhi Patil\",\n                    \"email\": \"siddhi@example.com\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n            \"labels\": [],\n            \"completedAt\": null,\n            \"checklist\": [],\n            \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n            \"updatedAt\": \"2026-06-14T12:17:29.128Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Implement JWT + Google OAuth\",\r\n  \"status\": \"in_progress\",\r\n  \"priority\": \"urgent\",\r\n  \"assignees\": [\r\n    \"6a2d2a563b5adef8040beecd\"\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/6a2e9bd95c05d95b21c6b287",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "tasks",
+                "6a2e9bd95c05d95b21c6b287"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "update",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Implement JWT + Google OAuth\",\r\n  \"status\": \"in_progress\",\r\n  \"priority\": \"urgent\",\r\n  \"assignees\": [\r\n    \"6a2d262525393e7da054e151\"\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/6a2e9bd95c05d95b21c6b287",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "6a2e9bd95c05d95b21c6b287"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "68a4b64a-e224-43bd-b549-56adff0f16a0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "736"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2e0-RvQn9ndGUxDqbpxODrMIoyOm9js\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 14:44:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task updated\",\n    \"data\": {\n        \"task\": {\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"title\": \"Implement JWT + Google OAuth\",\n            \"description\": \"Add access and refresh tokens\",\n            \"status\": \"in_progress\",\n            \"priority\": \"urgent\",\n            \"position\": 1000,\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication & Security\",\n                \"color\": \"#EC4899\"\n            },\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d262525393e7da054e151\",\n                    \"name\": \"Siddhi Patil\",\n                    \"email\": \"siddhi@example.com\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n            \"labels\": [],\n            \"completedAt\": null,\n            \"checklist\": [],\n            \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n            \"updatedAt\": \"2026-06-14T14:44:27.887Z\",\n            \"__v\": 0\n        }\n    }\n}"
+            },
+            {
+              "name": "update",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Implement JWT + Google OAuth\",\r\n  \"status\": \"in_progress\",\r\n  \"priority\": \"urgent\",\r\n  \"assignees\": [\r\n    \"6a2d2a563b5adef8040beecd\"\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/6a2e9bd95c05d95b21c6b287",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "6a2e9bd95c05d95b21c6b287"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "76813d5c-f946-40e7-9fb9-b8aa1d430d3e"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "735"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2df-ePYn+mLI0iCNUwBkdiZT30dTkDA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 14:45:24 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Task updated\",\n    \"data\": {\n        \"task\": {\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"title\": \"Implement JWT + Google OAuth\",\n            \"description\": \"Add access and refresh tokens\",\n            \"status\": \"in_progress\",\n            \"priority\": \"urgent\",\n            \"position\": 1000,\n            \"projectId\": \"6a2e93375fb54c10a4516aed\",\n            \"workspaceId\": \"6a2d51748249d4dc6ec116d2\",\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication & Security\",\n                \"color\": \"#EC4899\"\n            },\n            \"createdBy\": \"6a2d2aacaaf67b290e7d21dc\",\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d2a563b5adef8040beecd\",\n                    \"name\": \"Siddhi Patil\",\n                    \"email\": \"singh@example.com\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\",\n            \"labels\": [],\n            \"completedAt\": null,\n            \"checklist\": [],\n            \"createdAt\": \"2026-06-14T12:17:29.128Z\",\n            \"updatedAt\": \"2026-06-14T14:45:24.393Z\",\n            \"__v\": 1\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "reorder",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"updates\": [\r\n        {\r\n            \"taskId\": \"6a2ec07ab269e8e303d5a2f8\",\r\n            \"status\": \"todo\",\r\n            \"position\": 1000\r\n        },\r\n        {\r\n            \"taskId\": \"6a2e9bd95c05d95b21c6b287\",\r\n            \"status\": \"in_progress\",\r\n            \"position\": 2000\r\n        }\r\n    ],\r\n    \"projectId\": \"6a2e93375fb54c10a4516aed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/reorder",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "tasks",
+                "reorder"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "reorder",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"updates\": [\r\n        {\r\n            \"taskId\": \"6a2ec07ab269e8e303d5a2f8\",\r\n            \"status\": \"todo\",\r\n            \"position\": 1000\r\n        },\r\n        {\r\n            \"taskId\": \"6a2e9bd95c05d95b21c6b287\",\r\n            \"status\": \"in_progress\",\r\n            \"position\": 2000\r\n        }\r\n    ],\r\n    \"projectId\": \"6a2e93375fb54c10a4516aed\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/reorder",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "reorder"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "a977c50a-7823-4a49-85b9-7b81c9b05ea2"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "56"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"38-MqWTH1igkl0gyI73SNaTMAIA2fA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:02:16 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Tasks reordered\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/search?q=jwt",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "tasks",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "jwt"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "search",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/search?q=jwt",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "jwt"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "dfe8a56d-04b4-497a-a8cc-3e04cecccf34"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "309"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"135-/fon9+p6EmFz5v9HV7tuPscW7tk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:05:50 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"tasks\": [\n            {\n                \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n                \"title\": \"Implement JWT + Google OAuth\",\n                \"status\": \"in_progress\",\n                \"priority\": \"urgent\",\n                \"projectId\": \"6a2e93375fb54c10a4516aed\",\n                \"epicId\": {\n                    \"_id\": \"6a2e94165fb54c10a4516aee\",\n                    \"title\": \"Authentication & Security\",\n                    \"color\": \"#EC4899\"\n                }\n            }\n        ]\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "paginatedSearch",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/search/paginated?q=auth&page=1&limit=20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "tasks",
+                "search",
+                "paginated"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "auth"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "paginatedSearch",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/tasks/search/paginated?q=auth&page=1&limit=20",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "tasks",
+                    "search",
+                    "paginated"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "auth"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "cbb4460b-a9a5-4020-94f2-428b78f10a55"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "533"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"215-UhqNrBryL6GJ518n2mbkZbAxAO4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:06:55 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"_id\": \"6a2e9bd95c05d95b21c6b287\",\n            \"title\": \"Implement JWT + Google OAuth\",\n            \"status\": \"in_progress\",\n            \"priority\": \"urgent\",\n            \"projectId\": {\n                \"_id\": \"6a2e93375fb54c10a4516aed\",\n                \"name\": \"Backend API v2\",\n                \"emoji\": \"🔥\"\n            },\n            \"epicId\": {\n                \"_id\": \"6a2e94165fb54c10a4516aee\",\n                \"title\": \"Authentication & Security\",\n                \"color\": \"#EC4899\"\n            },\n            \"assignees\": [\n                {\n                    \"_id\": \"6a2d2a563b5adef8040beecd\",\n                    \"name\": \"Siddhi Patil\",\n                    \"avatar\": null\n                }\n            ],\n            \"dueDate\": \"2026-06-30T00:00:00.000Z\"\n        }\n    ],\n    \"pagination\": {\n        \"page\": 1,\n        \"limit\": 20,\n        \"total\": 1,\n        \"totalPages\": 1,\n        \"hasNextPage\": false,\n        \"hasPrevPage\": false\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "analytics",
+      "item": [
+        {
+          "name": "stats-workspace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/stats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "stats"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "stats-workspace",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/stats",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "stats"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "4b98816b-ae49-44f5-927c-c973660012b7"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "290"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"122-NPc0xCXXh02l1ErxwPOPQQ6SImI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:41:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"stats\": {\n            \"totals\": {\n                \"tasks\": 2,\n                \"projects\": 1,\n                \"overdue\": 0,\n                \"completedThisWeek\": 0\n            },\n            \"tasksByStatus\": {\n                \"backlog\": 0,\n                \"todo\": 1,\n                \"in_progress\": 1,\n                \"in_review\": 0,\n                \"done\": 0\n            },\n            \"tasksByPriority\": {\n                \"none\": 0,\n                \"low\": 0,\n                \"medium\": 1,\n                \"high\": 0,\n                \"urgent\": 1\n            },\n            \"completionTrend\": []\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "stats-project",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/:projectId/stats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "workspaces",
+                "6a2d51748249d4dc6ec116d2",
+                "projects",
+                ":projectId",
+                "stats"
+              ],
+              "variable": [
+                {
+                  "key": "projectId",
+                  "value": "6a2e93375fb54c10a4516aed"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "stats-project",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/workspaces/6a2d51748249d4dc6ec116d2/projects/:projectId/stats",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "workspaces",
+                    "6a2d51748249d4dc6ec116d2",
+                    "projects",
+                    ":projectId",
+                    "stats"
+                  ],
+                  "variable": [
+                    {
+                      "key": "projectId",
+                      "value": "6a2e93375fb54c10a4516aed"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "818d2202-fad6-46ca-aa9a-7705e4e81f7c"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "282"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"11a-FhEIREmYPAzrY0ubHBhT7RYZCOc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:42:39 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"stats\": {\n            \"progress\": 0,\n            \"totals\": {\n                \"total\": 0,\n                \"completed\": 0,\n                \"overdue\": 0\n            },\n            \"tasksByStatus\": {\n                \"backlog\": 0,\n                \"todo\": 0,\n                \"in_progress\": 0,\n                \"in_review\": 0,\n                \"done\": 0\n            },\n            \"tasksByPriority\": {\n                \"none\": 0,\n                \"low\": 0,\n                \"medium\": 0,\n                \"high\": 0,\n                \"urgent\": 0\n            },\n            \"tasksByAssignee\": []\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "notification",
+      "item": [
+        {
+          "name": "all marked read",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/notifications/read-all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "notifications",
+                "read-all"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "all marked read",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/notifications/read-all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "notifications",
+                    "read-all"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "01bd6fdb-95fe-48e1-84ea-481a929d7fcf"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "73"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"49-jjvchqAPSwE/Q2PGR+LcpSmc56k\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:10:53 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"All notifications marked as read\",\n    \"data\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/notifications/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "notifications",
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/notifications/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "notifications",
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "52936a14-9d84-421c-bfe6-b269a5529830"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "80"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"50-OHokEVlG53wKM76kKDF8u7G0GcQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:12:18 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"notifications\": [],\n        \"unreadCount\": 0\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "singleMsg-read",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/notifications/6a2ebe84b269e8e303d5a2f7/read",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "notifications",
+                "6a2ebe84b269e8e303d5a2f7",
+                "read"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "singleMsg-read",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/notifications/6a2ebe84b269e8e303d5a2f7/read",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "notifications",
+                    "6a2ebe84b269e8e303d5a2f7",
+                    "read"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "http://localhost:5173"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "X-Request-Id",
+                  "value": "135fc659-8d66-434c-9b47-9ddbcc3dc608"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "65"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"41-cACtEnwNVBzdteiE7b7uOgm7oEo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 14 Jun 2026 15:13:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"notification\": null\n    }\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
