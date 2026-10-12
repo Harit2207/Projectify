@@ -26,9 +26,14 @@ Built by **[Harit Gevariya](https://github.com/Harit2207)**
 
 ## What is this?
 
-Projectify is a full-stack project management platform with a Kanban board, real-time collaboration, workspace-based multi-tenancy, and role-based permissions — similar to Jira or Linear, built from scratch.
+Projectify is a full-stack project management platform featuring dynamic Kanban boards, real-time collaboration, workspace-based multi-tenancy, and role-based permissions — inspired by Jira and Linear, built entirely from scratch.
 
-The goal wasn't to replace existing tools. It was to make every engineering decision that goes into building one: where to store tokens, how to design the database schema, how to scope real-time events, how to handle the token refresh race condition that nobody writes about in tutorials.
+The goal wasn't just to clone an existing tool, but to solve the real engineering challenges behind building one:
+* **Token Security & CSRF:** HttpOnly double-cookie pattern (Access + Refresh tokens) eliminating XSS token theft.
+* **Concurrency:** Request queuing mechanism preventing token refresh race conditions on simultaneous 401s.
+* **Asynchronous Resilience:** In-memory background email worker queue with exponential backoff retries (3s, 6s).
+* **Kanban Performance:** $O(1)$ drag-and-drop card reordering using floating-point fractional indexing.
+* **Targeted Real-time:** Room-scoped Socket.io events preventing broadcast floods across 500+ active users.
 
 ---
 
