@@ -67,9 +67,7 @@ export function errorHandler(err, req, res, next) {
   return res.status(500).json({
     success: false,
     errorCode: 'INTERNAL_ERROR',
-    message: env.isProduction
-      ? 'Something went wrong'
-      : err.message, // Show real message in dev
+    message: err.message || 'Something went wrong',
   });
 
 }
