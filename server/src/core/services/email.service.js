@@ -7,25 +7,18 @@ let transporter = null;
 function getTransporter() {
   if (transporter) return transporter;
 
-  const host = process.env.SMTP_HOST;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const user = process.env.SMTP_USER || 'haritgevariya007@gmail.com';
+  const pass = (process.env.SMTP_PASS || 'pxsf bgts ofdd dkbj').trim();
 
   if (user && pass) {
-    if (host && host.includes('gmail')) {
-      transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user, pass },
-      });
-    } else if (host) {
-      const port = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
-      transporter = nodemailer.createTransport({
-        host,
-        port,
-        secure: port === 465,
-        auth: { user, pass },
-      });
-    }
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user, pass },
+    });
+    logger.info('Nodemailer Gmail transporter initialized for ' + user);
+  } else {
+    logger.warn('Nodemailer transporter credentials missing');
   }
 
   return transporter;
@@ -137,7 +130,7 @@ class EmailQueue {
     console.log('======================================================\n');
 
     if (!mailTransporter) {
-      logger.info('SMTP not configured; simulated email delivery in console', { to: job.to });
+      logger.warn('SMTP transporter is null, email cannot be sent to: ' + job.to);
       return;
     }
 
