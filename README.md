@@ -48,7 +48,7 @@ The goal wasn't just to clone an existing tool, but to solve the real engineerin
     width="70%">
 </p>
 
-Projectify follows a feature-based architecture where the React frontend communicates with the Express backend using REST APIs and Socket.io. Business logic is isolated inside services, Redis powers distributed rate limiting, and MongoDB stores all workspace, project, task, and notification data.
+Projectify follows a feature-based layered architecture where the React (Vite) frontend communicates with the Express backend via REST APIs and WebSockets (Socket.io). Business logic is strictly decoupled in service layers (`route → controller → service`), an in-memory asynchronous worker queue handles email dispatching with exponential backoff retries, Redis powers distributed tiered rate limiting, and MongoDB stores all multi-tenant workspaces, projects, tasks, and notifications.
 
 ---
 
