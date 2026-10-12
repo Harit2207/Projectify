@@ -13,12 +13,10 @@ Built by **[Harit Gevariya](https://github.com/Harit2207)**
 <br/>
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://projectify-steel.vercel.app)
-[![API Status](https://img.shields.io/badge/API_Server-Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://projectify-api-yogd.onrender.com/health)
 
 <br/>
 
 > 🌐 **Live Application:** [https://projectify-steel.vercel.app](https://projectify-steel.vercel.app)  
-> 🔗 **Backend API:** [https://projectify-api-yogd.onrender.com](https://projectify-api-yogd.onrender.com)  
 > 🔑 **Demo Credentials:** `demo@projectify.dev` / `Demo@1234`
 
 [![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
