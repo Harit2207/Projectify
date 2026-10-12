@@ -59,6 +59,18 @@ app.use(
   }),
 );
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    service: 'Projectify Production API',
+    status: 'online',
+    version: '1.0.0',
+    author: 'Harit Gevariya',
+    clientApp: env.clientUrl || 'https://projectify-steel.vercel.app',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({
