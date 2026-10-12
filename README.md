@@ -128,7 +128,7 @@ Projectify uses a dual-token authentication system with HttpOnly cookies, Google
 ## Project Structure
 
 ```
-task_manager/
+Projectify/
 ├── server/                          # Backend
 │   ├── src/
 │   │   ├── config/
@@ -139,6 +139,8 @@ task_manager/
 │   │   ├── core/
 │   │   │   ├── errors/              # Custom error classes
 │   │   │   ├── logger/              # Winston setup
+│   │   │   ├── services/
+│   │   │   │   └── email.service.js # Background email worker queue & templates
 │   │   │   ├── middleware/
 │   │   │   │   ├── authenticate.js  # JWT verification
 │   │   │   │   ├── validate.js      # Zod request validation
@@ -217,6 +219,13 @@ CLIENT_URL=http://localhost:5173
 GOOGLE_CLIENT_ID=your_client_id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=GOCSPX-your_secret
 GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
+
+# Email (Gmail SMTP with Background Worker Queue)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_gmail_app_password
+SMTP_FROM=Projectify <your_email@gmail.com>
 ```
 
 Start the server:
@@ -296,6 +305,8 @@ http://localhost:5000/api/docs.json
 |--------|----------|------|----------|
 | POST | /api/auth/signup | ❌ | — |
 | POST | /api/auth/login | ❌ | — |
+| POST | /api/auth/forgot-password | ❌ | — |
+| POST | /api/auth/reset-password | ❌ | — |
 | GET | /api/auth/me | ✅ | any |
 | POST | /api/auth/logout | ✅ | any |
 | POST | /api/auth/refresh | ❌ | — |
@@ -324,6 +335,7 @@ http://localhost:5000/api/docs.json
 | DELETE | /api/workspaces/:id/tasks/:tid | ✅ | creator/admin |
 | POST | /api/workspaces/:id/tasks/reorder | ✅ | member |
 | GET | /api/workspaces/:id/tasks/search | ✅ | member |
+| GET | /api/workspaces/:id/tasks/search/paginated | ✅ | member |
 | GET | /api/workspaces/:id/stats | ✅ | member |
 | GET | /api/workspaces/:id/projects/:pid/stats | ✅ | member |
 | GET | /api/notifications | ✅ | any |
@@ -354,6 +366,9 @@ Seven independent database queries run simultaneously instead of sequentially. R
 
 ### 7. Feature-based folder structure
 Each feature owns its routes, controller, service, model, and schemas together. Services never touch `req` or `res` — they receive plain arguments and return plain data, making them independently testable and reusable.
+
+### 8. In-Memory Asynchronous Job Queue for Background Emails
+Directly awaiting SMTP email delivery inside controllers introduces a 2–3 second latency penalty and risks request timeouts. An in-memory queue decouples email dispatching from the HTTP lifecycle, returning instant 200 OK responses to users while a background worker processes jobs with automatic exponential backoff retries (3s, 6s).
 
 ---
 
