@@ -114,7 +114,7 @@ export async function forgotPassword(email) {
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
 
-  const clientUrl = env.clientUrl || (env.isProduction ? 'https://projectify-steel.vercel.app' : 'http://localhost:5173');
+  const clientUrl = 'https://projectify-steel.vercel.app';
   const resetUrl = `${clientUrl}/reset-password?token=${resetToken}`;
 
   await sendPasswordResetEmail({
