@@ -426,6 +426,11 @@ These are deliberate tradeoffs, not oversights:
 | `JWT_ACCESS_SECRET` | Generate: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` |
 | `JWT_REFRESH_SECRET` | Same command, different value |
 | `CLIENT_URL` | Your frontend URL (`http://localhost:5173` locally) |
+| `SMTP_HOST` | SMTP host (e.g. `smtp.gmail.com`) |
+| `SMTP_PORT` | SMTP port (`465` for SSL, `587` for TLS) |
+| `SMTP_USER` | Gmail address used to dispatch notifications |
+| `SMTP_PASS` | Google Account → Security → 2-Step Verification → App Passwords (16-char) |
+| `SMTP_FROM` | Sender display name and email (e.g. `Projectify <your@email.com>`) |
 | `GOOGLE_CLIENT_ID` | Google Cloud Console → APIs & Services → Credentials → OAuth 2.0 Client |
 | `GOOGLE_CLIENT_SECRET` | Same as above |
 | `GOOGLE_CALLBACK_URL` | Must match exactly what you set in Google Console |
