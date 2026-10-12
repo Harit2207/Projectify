@@ -74,6 +74,14 @@ export async function inviteMember(workspace, { email, role }) {
   workspace.members.push({ userId: userToInvite._id, role });
   await workspace.save();
 
+  // Non-blocking background workspace invite email dispatch
+  sendWorkspaceInviteEmail({
+    to: userToInvite.email,
+    userName: userToInvite.name || 'Teammate',
+    workspaceName: workspace.name,
+    role,
+  });
+
   logger.info('Member invited', {
     workspaceId: workspace._id,
     invitedUserId: userToInvite._id,
