@@ -505,26 +505,6 @@ npm run lint      # ESLint check
 
 ---
 
-## What I'd Add Next
-
-**Immediate** (know exactly how to build):
-- MongoDB transactions for cascade deletes
-- Refresh token rotation with Redis storage
-- MongoDB text index for proper full-text search
-
-**Medium term**:
-- File attachments on tasks (S3 presigned URLs)
-- Task comments system with real-time updates
-- Activity feed / audit log
-- Two-factor authentication (2FA / TOTP)
-
-**Longer term**:
-- Socket.io Redis adapter for multi-instance support
-- Elasticsearch or Atlas Search for ranked full-text search
-- API versioning (`/api/v1/`, `/api/v2/`)
-- Integration test suite (Jest + Supertest)
-
----
 
 ## License
 
