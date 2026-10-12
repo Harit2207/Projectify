@@ -99,6 +99,23 @@ export async function createTask(projectId, workspaceId, userId, data) {
 
   emitToProject(projectId.toString(), 'task:created', { task });
 
+  if (data.assignees?.length) {
+    for (const assigneeId of data.assignees) {
+      notifyTaskAssigned({
+        assigneeId,
+        workspaceId,
+        taskTitle: task.title,
+        projectId: task.projectId,
+        taskId: task._id,
+        actorId: userId,
+      }).catch((err) => {
+        logger.error('Failed to send assignment notification on task creation', {
+          error: err.message,
+        });
+      });
+    }
+  }
+
   return task;
 }
 
@@ -112,7 +129,7 @@ export async function getTask(taskId, workspaceId) {
   return task;
 }
 
-export async function updateTask(taskId, workspaceId, data) {
+export async function updateTask(taskId, workspaceId, data, actorId = null) {
 
   const task = await Task.findOne({ _id: taskId, workspaceId });
   if (!task) throw new NotFoundError('Task');
@@ -141,7 +158,7 @@ export async function updateTask(taskId, workspaceId, data) {
       taskTitle: task.title,
       projectId: task.projectId,
       taskId: task._id,
-      actorId: null, //avaliable via req.user in controller
+      actorId,
     }).catch((err) => {
       
       logger.error('Failed to send assignment notification', {

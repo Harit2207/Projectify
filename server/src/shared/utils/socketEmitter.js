@@ -3,7 +3,7 @@ import { logger } from '../../core/logger/logger.js';
 
 export function emitToProject(projectId, event, payload) {
     try {
-        getIO.to(`project:${projectId}`).emit(event, payload);
+        getIO().to(`project:${projectId}`).emit(event, payload);
     } catch (error) {
         logger.error('Failed to emit socket event', {
             event,
@@ -15,7 +15,7 @@ export function emitToProject(projectId, event, payload) {
 
 export function emitToWorkspace(workspaceId, event, payload) {
     try {
-        getIO.to(`workspace:${workspaceId}`).emit(event, payload);
+        getIO().to(`workspace:${workspaceId}`).emit(event, payload);
     } catch (error) {
         logger.error('Failed to emit socket event', {
             event,
@@ -27,7 +27,7 @@ export function emitToWorkspace(workspaceId, event, payload) {
 
 export function emitToUser(userId, event, payload) {
     try {
-        getIO.to(`user:${userId}`).emit(event, payload);
+        getIO().to(`user:${userId}`).emit(event, payload);
     } catch (error) {
         logger.error('Failed to emit socket event', {
             event,

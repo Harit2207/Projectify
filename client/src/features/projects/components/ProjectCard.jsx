@@ -18,8 +18,8 @@ const STATUS_COLORS = {
   completed: 'outline',
 };
 
-export function ProjectCard({ project, onOpen, onDelete }) {
-  const { hasMinRole } = usePermission();
+export function ProjectCard({ project, workspaceId, onOpen, onDelete }) {
+  const { hasMinRole } = usePermission(workspaceId);
 
   return (
     <Card

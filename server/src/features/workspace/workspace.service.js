@@ -101,20 +101,8 @@ export async function inviteMember(workspace, { email, role }) {
 }
 
 export async function updateMemberRole(workspace, memberId, newRole, requesterId) {
-  //debug
-   console.log('URL memberId:', memberId);
-
-  console.log(
-    'Workspace members:',
-    workspace.members.map((m) => ({
-      userId: m.userId,
-      userIdString: m.userId?.toString(),
-      role: m.role,
-    })),
-  );
-  
   const targetMember = workspace.members.find(
-    (m) => m.userId.toString() === memberId,
+    (m) => (m.userId?._id?.toString() || m.userId?.toString()) === memberId,
   );
 
   if (!targetMember) throw new NotFoundError('Member not found in workspace');
@@ -134,7 +122,7 @@ export async function updateMemberRole(workspace, memberId, newRole, requesterId
 
 export async function removeMember(workspace, memberId, requesterId) {
   const targetMember = workspace.members.find(
-    (m) => m.userId.toString() === memberId,
+    (m) => (m.userId?._id?.toString() || m.userId?.toString()) === memberId,
   );
 
   if (!targetMember) throw new NotFoundError('Member not found in workspace');
@@ -151,7 +139,7 @@ export async function removeMember(workspace, memberId, requesterId) {
   }
 
   workspace.members = workspace.members.filter(
-    (m) => m.userId.toString() !== memberId,
+    (m) => (m.userId?._id?.toString() || m.userId?.toString()) !== memberId,
   );
 
   await workspace.save();

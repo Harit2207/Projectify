@@ -31,7 +31,7 @@ export function EpicsPanel({ workspaceId, projectId }) {
 
   const { data: epics, isLoading } = useEpics(workspaceId, projectId);
   const { mutate: deleteEpic, isPending: isDeleting } = useDeleteEpic();
-  const { hasMinRole } = usePermission();
+  const { hasMinRole } = usePermission(workspaceId);
 
   return (
     <>

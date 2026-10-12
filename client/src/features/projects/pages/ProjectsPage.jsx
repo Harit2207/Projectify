@@ -23,7 +23,7 @@ export default function ProjectsPage() {
   const { data: projects, isLoading } = useProjects(workspaceId);
   const { mutate: deleteProject, isPending: isDeleting } =
     useDeleteProject();
-  const { hasMinRole } = usePermission();
+  const { hasMinRole } = usePermission(workspaceId);
 
   if (isLoading) return <ProjectsListSkeleton />;
 

@@ -61,7 +61,7 @@ export function TaskModal({
     workspaceId,
     projectId,
   );
-  const { hasMinRole } = usePermission();
+  const { hasMinRole } = usePermission(workspaceId);
   const { user } = useAuthStore();
 
   useEffect(() => {

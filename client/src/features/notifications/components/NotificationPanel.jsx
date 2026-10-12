@@ -16,10 +16,10 @@ import { ScrollArea } from '../../../shared/components/ui/scroll-area.jsx';
 import { cn } from '../../../shared/utils/cn.js';
 
 const NOTIFICATION_ICONS = {
-  task_assigned: '📋',
+  task_assigned: '📌',
   task_completed: '✅',
   member_joined: '👋',
-  member_removed: '👤',
+  member_removed: '🚪',
   task_due_soon: '⏰',
   comment_added: '💬',
 };
