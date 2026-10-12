@@ -513,10 +513,10 @@ npm run lint      # ESLint check
 - MongoDB text index for proper full-text search
 
 **Medium term**:
-- Email notifications via BullMQ queue + nodemailer
 - File attachments on tasks (S3 presigned URLs)
 - Task comments system with real-time updates
 - Activity feed / audit log
+- Two-factor authentication (2FA / TOTP)
 
 **Longer term**:
 - Socket.io Redis adapter for multi-instance support
@@ -534,9 +534,13 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 ## 👨‍💻 Author
 
-Built as a production-inspired full-stack portfolio project to explore the engineering challenges behind modern project management platforms like Jira.
+**Harit Gevariya**  
+*Full-Stack Software Engineer*
 
-This project showcases secure authentication, workspace-based multi-tenancy, role-based access control (RBAC), real-time collaboration with Socket.io, scalable REST APIs, MongoDB data modeling, Redis-backed rate limiting, and modern React development.
+- **GitHub:** [@Harit2207](https://github.com/Harit2207)
+- **Repository:** [Projectify](https://github.com/Harit2207/Projectify)
 
-If you found this project helpful or learned something from it, consider giving it a ⭐ to support the project.
+Built as a production-grade full-stack project management platform solving real-world engineering challenges: secure dual-token HttpOnly authentication, real-time room-scoped Socket.io collaboration, O(1) fractional indexing in Kanban boards, in-memory asynchronous background email worker queues, and multi-tenant role-based access control.
+
+If you found this project helpful or learned something from it, consider giving it a ⭐ to support the project!
 
