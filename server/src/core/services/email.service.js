@@ -93,6 +93,8 @@ export function verifyEmailConfig() {
  * Core provider-agnostic direct email sender.
  * Enforces 12-second abort timeout so network blocks never hang Express.
  */
+export const sendEmail = sendEmailDirect;
+
 export async function sendEmailDirect({ to, subject, html, text = '', type = 'transactional' }) {
   const provider = getActiveEmailProvider();
   const fromHeader = env.email.from;
@@ -248,19 +250,32 @@ class EmailQueue {
   }
 
   enqueue(job) {
-    const jobItem = {
-      ...job,
-      id: Math.random().toString(36).substring(7),
-      attempts: 0,
-      createdAt: new Date(),
-    };
-    this.queue.push(jobItem);
-    logger.info('email queued', {
-      jobType: job.type,
-      recipient: job.to,
-      queueLength: this.queue.length,
-    });
-    this.processNext();
+    try {
+      const jobItem = {
+        ...job,
+        id: Math.random().toString(36).substring(7),
+        attempts: 0,
+        createdAt: new Date(),
+      };
+      this.queue.push(jobItem);
+      logger.info('email queued', {
+        jobType: job.type,
+        recipient: job.to,
+        queueLength: this.queue.length,
+      });
+      this.processNext();
+    } catch (queueErr) {
+      logger.warn('Queue enqueue failed, falling back to direct send', {
+        recipient: job.to,
+        error: queueErr.message,
+      });
+      sendEmailDirect(job).catch((directErr) => {
+        logger.error('email failed (direct fallback)', {
+          recipient: job.to,
+          error: directErr.message,
+        });
+      });
+    }
   }
 
   processNext() {
@@ -394,14 +409,14 @@ Go to My Dashboard: ${clientUrl}
 If you have any questions, feel free to reply directly to this email!`;
 
   const html = wrapEmailTemplate({
-    title: "Welcome to Projectify! Let's build something great 🚀",
+    title: "Welcome to Projectify! Let's build something great \u{1F680}",
     content,
   });
 
   emailQueue.enqueue({
     type: 'welcome',
     to,
-    subject: "Welcome to Projectify! Let's build something great 🚀",
+    subject: "Welcome to Projectify! Let's build something great \u{1F680}",
     html,
     text,
   });

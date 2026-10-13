@@ -38,8 +38,15 @@ export async function signup({ name, email, password }, res) {
 
   issueTokens(res, user._id);
 
-  // Background welcome email dispatch
-  sendWelcomeEmail({ to: user.email, userName: user.name });
+  // Non-blocking background welcome email dispatch
+  try {
+    sendWelcomeEmail({ to: user.email, userName: user.name });
+  } catch (emailErr) {
+    logger.error('Failed to dispatch welcome email on registration', {
+      error: emailErr.message,
+      userId: user._id,
+    });
+  }
 
   return user.toSafeObject();
 }
