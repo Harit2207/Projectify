@@ -108,6 +108,7 @@ export async function createTask(projectId, workspaceId, userId, data) {
         projectId: task.projectId,
         taskId: task._id,
         actorId: userId,
+        priority: task.priority || data.priority || 'medium',
       }).catch((err) => {
         logger.error('Failed to send assignment notification on task creation', {
           error: err.message,
@@ -159,6 +160,7 @@ export async function updateTask(taskId, workspaceId, data, actorId = null) {
       projectId: task.projectId,
       taskId: task._id,
       actorId,
+      priority: task.priority || data.priority || 'medium',
     }).catch((err) => {
       
       logger.error('Failed to send assignment notification', {

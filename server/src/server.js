@@ -6,12 +6,14 @@ import { env } from './config/env.js';
 import { connectDB } from './config/db.js';
 import { connectRedis } from './config/redis.js';
 import { initSocket } from './config/socket.js';
+import { verifyEmailConfig } from './core/services/email.service.js';
 import { logger } from './core/logger/logger.js';
 
 async function bootstrap() {
   try {
     await connectDB();
     await connectRedis();
+    verifyEmailConfig();
 
     const httpServer = createServer(app);
 

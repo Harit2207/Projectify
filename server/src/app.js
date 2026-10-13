@@ -22,6 +22,7 @@ import { projectRouter } from './features/projects/projects.routes.js';
 import { taskRouter } from './features/tasks/tasks.routes.js';
 import { analyticsRouter } from './features/analytics/analytics.routes.js';
 import { notificationRouter } from './features/notification/notification.routes.js';
+import { debugRouter } from './features/debug/debug.routes.js';
 
 const app = express();
 
@@ -86,6 +87,7 @@ app.use('/api/workspaces/:workspaceId/projects', projectRouter);
 app.use('/api/workspaces/:workspaceId', taskRouter);
 app.use('/api/workspaces/:workspaceId', analyticsRouter);
 app.use('/api/notifications', notificationRouter);
+app.use('/api/_debug', debugRouter);
 
 // 404 handler
 app.use((req, res) => {

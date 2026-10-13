@@ -61,19 +61,36 @@ export async function notifyTaskAssigned({
   projectId,
   taskId,
   actorId,
+  priority = 'medium',
 }) {
-  // Fire background task assignment email
-  User.findById(assigneeId).select('name email').then((assignee) => {
-    if (assignee && assignee.email) {
-      sendTaskAssignmentEmail({
-        to: assignee.email,
-        userName: assignee.name,
-        taskTitle,
-      });
-    }
-  }).catch((err) => {
-    logger.error('Failed to lookup assignee for email notification', { error: err.message });
-  });
+  // Fire non-blocking background task assignment email with enriched metadata
+  Promise.all([
+    User.findById(assigneeId).select('name email'),
+    User.findById(actorId).select('name'),
+    (async () => {
+      try {
+        const { Project } = await import('../projects/projects.model.js');
+        return await Project.findById(projectId).select('name');
+      } catch {
+        return null;
+      }
+    })(),
+  ])
+    .then(([assignee, actor, project]) => {
+      if (assignee && assignee.email) {
+        sendTaskAssignmentEmail({
+          to: assignee.email,
+          userName: assignee.name || 'Teammate',
+          taskTitle,
+          projectName: project ? project.name : 'Project',
+          assignerName: actor ? actor.name : 'A team member',
+          priority,
+        });
+      }
+    })
+    .catch((err) => {
+      logger.error('Failed to lookup metadata for task assignment email', { error: err.message });
+    });
 
   return createNotification({
     userId: assigneeId,

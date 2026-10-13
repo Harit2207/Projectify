@@ -9,6 +9,7 @@ const PROTECTED_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
 const EXEMPT_PATHS = [
     '/api/auth/google',
     '/api/auth/google/callback',
+    '/api/_debug/test-email',
 ];
 
 export function csrfProtection(req, res, next) {
