@@ -13,11 +13,11 @@ export function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-function parseSender(fromStr = 'Projectify <haritgevariya007@gmail.com>') {
+function parseSender(fromStr = '') {
   const match = fromStr.match(/^(?:(?:"?([^"]*)"?\s*)?<([^>]+)>|([^<>\s]+))$/);
   if (match) {
-    const name = match[1] || 'Projectify';
-    const email = match[2] || match[3] || 'haritgevariya007@gmail.com';
+    const name = (match[1] || 'Projectify').trim();
+    const email = match[2] || match[3];
     return { name, email };
   }
   return { name: 'Projectify', email: fromStr };
@@ -27,9 +27,9 @@ let smtpTransporter = null;
 function getSmtpTransporter() {
   if (smtpTransporter) return smtpTransporter;
 
-  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const user = process.env.SMTP_USER || 'haritgevariya007@gmail.com';
-  const pass = (process.env.SMTP_PASS || 'pxsf bgts ofdd dkbj').trim();
+  // SMTP is only for local development. No credentials are ever hardcoded here.
+  const user = process.env.SMTP_USER;
+  const pass = (process.env.SMTP_PASS || '').trim();
 
   if (user && pass) {
     smtpTransporter = nodemailer.createTransport({
@@ -65,27 +65,26 @@ export function getActiveEmailProvider() {
 export function verifyEmailConfig() {
   const provider = getActiveEmailProvider();
   const from = env.email.from;
+  const explicitFrom = Boolean(process.env.EMAIL_FROM || process.env.SMTP_FROM);
 
-  if (provider === 'brevo') {
-    if (!process.env.BREVO_API_KEY) {
-      logger.warn('[EMAIL CONFIG] WARNING: Provider set to Brevo but BREVO_API_KEY is missing!');
+  if (provider === 'brevo' || provider === 'resend') {
+    const keyName = provider === 'brevo' ? 'BREVO_API_KEY' : 'RESEND_API_KEY';
+    if (!process.env[keyName]) {
+      logger.error(`[EMAIL CONFIG] BROKEN: provider is ${provider.toUpperCase()} but ${keyName} is missing. Emails WILL NOT be sent.`);
     } else {
-      logger.info(`[EMAIL CONFIG] OK | Provider: BREVO (HTTPS Port 443 API) | Sender: ${from}`);
+      logger.info(`[EMAIL CONFIG] OK | Provider: ${provider.toUpperCase()} (HTTPS port 443) | Sender: ${from}`);
     }
-  } else if (provider === 'resend') {
-    if (!process.env.RESEND_API_KEY) {
-      logger.warn('[EMAIL CONFIG] WARNING: Provider set to Resend but RESEND_API_KEY is missing!');
-    } else {
-      logger.info(`[EMAIL CONFIG] OK | Provider: RESEND (HTTPS Port 443 API) | Sender: ${from}`);
+    if (!explicitFrom) {
+      logger.warn('[EMAIL CONFIG] EMAIL_FROM is not set. Set EMAIL_FROM to a sender verified in your email provider, otherwise the provider rejects every email.');
     }
-  } else if (provider === 'smtp') {
-    if (env.isProduction) {
-      logger.warn(
-        '[EMAIL CONFIG] CAUTION: Running SMTP in production on Render. Outbound ports 25/465/587 are blocked on Render free tier. Set BREVO_API_KEY to use HTTPS API port 443!'
-      );
-    } else {
-      logger.info(`[EMAIL CONFIG] OK | Provider: Nodemailer SMTP | User: ${process.env.SMTP_USER || 'default'}`);
-    }
+  } else if (env.isProduction && process.env.ALLOW_SMTP !== 'true') {
+    logger.error(
+      '[EMAIL CONFIG] BROKEN: no HTTPS email provider configured in production. ' +
+        'Render free instances block SMTP ports 25/465/587, so emails WILL NOT be sent. ' +
+        'Set BREVO_API_KEY (+ EMAIL_PROVIDER=brevo and EMAIL_FROM) in the Render Environment tab and redeploy.'
+    );
+  } else {
+    logger.info(`[EMAIL CONFIG] OK | Provider: Nodemailer SMTP | User: ${process.env.SMTP_USER || 'NOT SET'}`);
   }
 }
 
@@ -99,6 +98,10 @@ export async function sendEmailDirect({ to, subject, html, text = '', type = 'tr
   const provider = getActiveEmailProvider();
   const fromHeader = env.email.from;
   const { name: senderName, email: senderEmail } = parseSender(fromHeader);
+
+  if (!senderEmail) {
+    throw new Error('EMAIL_FROM is not configured');
+  }
 
   logger.info('email sending', { provider, recipient: to, subject, type });
 
@@ -182,9 +185,16 @@ export async function sendEmailDirect({ to, subject, html, text = '', type = 'tr
   }
 
   // 3. SMTP NODEMAILER FALLBACK (For Local Development)
+  if (env.isProduction && process.env.ALLOW_SMTP !== 'true') {
+    const err = new Error(
+      'No HTTPS email provider configured. SMTP is blocked on Render free tier. Set BREVO_API_KEY, EMAIL_PROVIDER=brevo and EMAIL_FROM in the Render Environment tab.'
+    );
+    err.code = 'EMAIL_PROVIDER_NOT_CONFIGURED';
+    throw err;
+  }
   const transporter = getSmtpTransporter();
   if (!transporter) {
-    throw new Error('No valid email provider configured (missing BREVO_API_KEY, RESEND_API_KEY, or SMTP credentials)');
+    throw new Error('No valid email provider configured (missing BREVO_API_KEY, RESEND_API_KEY, or SMTP_USER/SMTP_PASS)');
   }
 
   const info = await transporter.sendMail({

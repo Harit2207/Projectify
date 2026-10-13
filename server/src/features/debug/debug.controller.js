@@ -1,11 +1,19 @@
 import { sendEmailDirect, getActiveEmailProvider } from '../../core/services/email.service.js';
+import crypto from 'crypto';
 import { env } from '../../config/env.js';
 import { ForbiddenError } from '../../core/errors/errorTypes.js';
 
 export async function testEmail(req, res, next) {
   try {
     const secret = req.headers['x-debug-secret'];
-    const isAuthorized = !env.isProduction || env.email.enableDebug || (secret && secret === env.email.debugSecret);
+    const expected = env.email.debugSecret;
+    const secretOk =
+      Boolean(expected) &&
+      typeof secret === 'string' &&
+      secret.length === expected.length &&
+      crypto.timingSafeEqual(Buffer.from(secret), Buffer.from(expected));
+    // In production the endpoint needs BOTH the enable flag and the secret header.
+    const isAuthorized = env.isProduction ? env.email.enableDebug && secretOk : true;
 
     if (!isAuthorized) {
       throw new ForbiddenError('Unauthorized: Diagnostic test endpoint is protected');
