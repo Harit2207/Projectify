@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
+import { API_BASE_URL } from '../api/client.js';
 import { useAuthStore } from '../store/authStore.js';
 import { useSocketStore } from '../store/socketStore.js';
-
-const SOCKET_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:5000';
 
 export function SocketProvider({ children }) {
   const { isAuthenticated } = useAuthStore();
@@ -12,7 +11,7 @@ export function SocketProvider({ children }) {
   useEffect(() => {
     if (!isAuthenticated) return;
 
-    const socket = io(SOCKET_URL, {
+    const socket = io(API_BASE_URL, {
       withCredentials: true,
       reconnection: true,
       reconnectionAttempts: 5,

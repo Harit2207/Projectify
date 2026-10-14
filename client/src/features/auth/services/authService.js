@@ -1,15 +1,15 @@
-import { apiClient } from '../../../core/api/client.js';
+import { apiClient, API_BASE_URL } from '../../../core/api/client.js';
 import { ENDPOINTS } from '../../../core/api/endpoints.js';
 
 export const authService = {
   signup: async (data) => {
     const res = await apiClient.post(ENDPOINTS.auth.signup, data);
-    return res.data.data.user;
+    return res.data.data; // Returns { user, accessToken }
   },
 
   login: async (data) => {
     const res = await apiClient.post(ENDPOINTS.auth.login, data);
-    return res.data.data.user;
+    return res.data.data; // Returns { user, accessToken }
   },
 
   getMe: async () => {
@@ -35,8 +35,6 @@ export const authService = {
   },
 
   googleLogin: () => {
-    const rawBaseUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:5000';
-    const baseUrl = rawBaseUrl.replace(/\/api\/?$/, '').replace(/\/+$/, '');
-    window.location.href = `${baseUrl}/api/auth/google`;
+    window.location.href = `${API_BASE_URL}/api/auth/google`;
   },
 };

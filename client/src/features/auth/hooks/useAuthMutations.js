@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { authService } from '../services/authService.js';
 import { useAuthStore } from '../../../core/store/authStore.js';
 import { toast } from 'sonner';
@@ -16,16 +16,20 @@ export function useLogin() {
   const { setAuth } = useAuthStore();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return useMutation({
     mutationFn: authService.login,
     onSuccess: (data) => {
       const user = data.user || data;
-      const token = data.accessToken || null;
+      const token = data.accessToken || data.token || null;
       setAuth(user, token);
-      if (token) localStorage.setItem('token', token);
+      if (token) {
+        localStorage.setItem('token', token);
+      }
       queryClient.setQueryData(['auth', 'me'], user);
-      navigate('/dashboard');
+      const destination = location.state?.from?.pathname || '/dashboard';
+      navigate(destination, { replace: true });
       toast.success(`Welcome back, ${user.name}`);
     },
     onError: (error) => {
@@ -36,17 +40,20 @@ export function useLogin() {
 
 export function useSignup() {
   const { setAuth } = useAuthStore();
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   return useMutation({
     mutationFn: authService.signup,
     onSuccess: (data) => {
       const user = data.user || data;
-      const token = data.accessToken || null;
+      const token = data.accessToken || data.token || null;
       setAuth(user, token);
-      if (token) localStorage.setItem('token', token);
+      if (token) {
+        localStorage.setItem('token', token);
+      }
       queryClient.setQueryData(['auth', 'me'], user);
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
       toast.success('Account created successfully');
     },
     onError: (error) => {

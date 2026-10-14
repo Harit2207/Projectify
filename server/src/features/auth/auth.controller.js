@@ -4,13 +4,13 @@ import { sendSuccess, sendCreated } from '../../shared/utils/response.js';
 import { env } from '../../config/env.js';
 
 export const signupController = asyncHandler(async (req, res) => {
-  const user = await authService.signup(req.body, res);
-  sendCreated(res, { user }, 'Account created successfully');
+  const { user, accessToken } = await authService.signup(req.body, res);
+  sendCreated(res, { user, accessToken }, 'Account created successfully');
 });
 
 export const loginController = asyncHandler(async (req, res) => {
-  const user = await authService.login(req.body, res);
-  sendSuccess(res, { user }, 'Login successful');
+  const { user, accessToken } = await authService.login(req.body, res);
+  sendSuccess(res, { user, accessToken }, 'Login successful');
 });
 
 export const getMeController = asyncHandler(async (req, res) => {
@@ -24,8 +24,11 @@ export const logoutController = asyncHandler(async (req, res) => {
 });
 
 export const refreshController = asyncHandler(async (req, res) => {
-  const user = await authService.refresh(req.cookies?.refreshToken, res);
-  sendSuccess(res, { user }, 'Token refreshed');
+  const authHeader = req.headers.authorization;
+  const bearerToken = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
+  const refreshToken = req.cookies?.refreshToken || req.body?.refreshToken || bearerToken;
+  const { user, accessToken } = await authService.refresh(refreshToken, res);
+  sendSuccess(res, { user, accessToken }, 'Token refreshed');
 });
 
 export const googleCallbackController = asyncHandler(async (req, res) => {

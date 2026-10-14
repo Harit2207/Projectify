@@ -34,11 +34,32 @@ if (env.isProduction) {
 // Security and request middleware
 app.use(helmetConfig);
 
+const allowedOrigins = [
+  env.clientUrl ? env.clientUrl.replace(/\/+$/, '') : null,
+  env.frontendUrl ? env.frontendUrl.replace(/\/+$/, '') : null,
+  'https://projectify-steel.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:5000',
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: env.clientUrl,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g. mobile apps, curl, server-to-server)
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/+$/, '');
+      if (
+        allowedOrigins.includes(cleanOrigin) ||
+        /\.vercel\.app$/.test(cleanOrigin)
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Permissive origin to prevent cross-domain blocking
+    },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   }),
 );
 

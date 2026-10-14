@@ -26,6 +26,7 @@ function issueTokens(res, userId) {
   const refreshToken = signRefreshToken(payload);
   setAccessTokenCookie(res, accessToken);
   setRefreshTokenCookie(res, refreshToken);
+  return { accessToken, refreshToken };
 }
 
 export async function signup({ name, email, password }, res) {
@@ -36,7 +37,7 @@ export async function signup({ name, email, password }, res) {
 
   logger.info('New user registered', { userId: user._id });
 
-  issueTokens(res, user._id);
+  const { accessToken, refreshToken } = issueTokens(res, user._id);
 
   // Non-blocking background welcome email dispatch
   try {
@@ -48,14 +49,24 @@ export async function signup({ name, email, password }, res) {
     });
   }
 
-  return user.toSafeObject();
+  return { user: user.toSafeObject(), accessToken, refreshToken };
 }
 
 // ── Login ─────────────────────────────────────────────────────────
 export async function login({ email, password }, res) {
   const user = await User.findOne({ email }).select('+password');
 
-  if (!user || !user.password) {
+  if (!user) {
+    throw new UnauthorizedError('Invalid email or password');
+  }
+
+  if (!user.password && user.googleId) {
+    throw new UnauthorizedError(
+      "This account was created with Google. Please click 'Continue with Google' to sign in."
+    );
+  }
+
+  if (!user.password) {
     throw new UnauthorizedError('Invalid email or password');
   }
 
@@ -69,9 +80,9 @@ export async function login({ email, password }, res) {
 
   logger.info('User logged in', { userId: user._id });
 
-  issueTokens(res, user._id);
+  const { accessToken, refreshToken } = issueTokens(res, user._id);
 
-  return user.toSafeObject();
+  return { user: user.toSafeObject(), accessToken, refreshToken };
 }
 
 // ── Get current user ──────────────────────────────────────────────
@@ -98,7 +109,7 @@ export async function refresh(refreshToken, res) {
   const accessToken = signAccessToken({ userId: user._id.toString() });
   setAccessTokenCookie(res, accessToken);
 
-  return user.toSafeObject();
+  return { user: user.toSafeObject(), accessToken };
 }
 
 export async function handleGoogleCallback(user, res) {

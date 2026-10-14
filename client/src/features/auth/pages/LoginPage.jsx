@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'react-router-dom';
-import { Loader2, Eye, EyeOff } from 'lucide-react';
+import { Link, useLocation, Navigate } from 'react-router-dom';
+import { Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { loginSchema } from '../schemas/authSchemas.js';
 import { useLogin } from '../hooks/useAuthMutations.js';
+import { useAuthStore } from '../../../core/store/authStore.js';
 import { Button } from '../../../shared/components/ui/button.jsx';
 import { Input } from '../../../shared/components/ui/input.jsx';
 import { Label } from '../../../shared/components/ui/label.jsx';
@@ -13,8 +14,13 @@ import { GoogleButton } from '../components/GoogleButton.jsx';
 import { FormError } from '../components/FormError.jsx';
 
 export default function LoginPage() {
+  const { isAuthenticated } = useAuthStore();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const errorParam = searchParams.get('error');
+
   const [showPassword, setShowPassword] = useState(false);
-  const { mutate: login, isPending } = useLogin();
+  const { mutate: login, isPending, error: loginError } = useLogin();
 
   const {
     register,
@@ -25,8 +31,35 @@ export default function LoginPage() {
     defaultValues: { email: '', password: '' },
   });
 
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  const urlErrorMessage =
+    errorParam === 'google_failed'
+      ? 'Google sign-in was cancelled or failed. Please try again or use your email and password.'
+      : errorParam === 'session_expired'
+      ? 'Your session has expired. Please sign in again.'
+      : null;
+
+  const serverErrorMessage = loginError?.response?.data?.message;
+
   return (
     <AuthLayout title="Welcome back" subtitle="Sign in to your account">
+      {urlErrorMessage && (
+        <div className="mb-4 flex items-start gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
+          <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+          <span>{urlErrorMessage}</span>
+        </div>
+      )}
+
+      {serverErrorMessage && !urlErrorMessage && (
+        <div className="mb-4 flex items-start gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
+          <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+          <span>{serverErrorMessage}</span>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit((data) => login(data))} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
@@ -34,6 +67,7 @@ export default function LoginPage() {
             id="email"
             type="email"
             autoComplete="email"
+            placeholder="you@example.com"
             {...register('email')}
             aria-invalid={!!errors.email}
           />
@@ -55,6 +89,7 @@ export default function LoginPage() {
               id="password"
               type={showPassword ? 'text' : 'password'}
               autoComplete="current-password"
+              placeholder="••••••••"
               className="pr-10"
               {...register('password')}
               aria-invalid={!!errors.password}

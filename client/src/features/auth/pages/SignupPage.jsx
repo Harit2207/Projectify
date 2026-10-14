@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from 'react-router-dom';
-import { Loader2, Eye, EyeOff } from 'lucide-react';
+import { Link, Navigate } from 'react-router-dom';
+import { Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { signupSchema } from '../schemas/authSchemas.js';
 import { useSignup } from '../hooks/useAuthMutations.js';
+import { useAuthStore } from '../../../core/store/authStore.js';
 import { useDebouncedCallback } from '../../../shared/hooks/useDebounce.js';
 import { Button } from '../../../shared/components/ui/button.jsx';
 import { Input } from '../../../shared/components/ui/input.jsx';
@@ -14,10 +15,11 @@ import { GoogleButton } from '../components/GoogleButton.jsx';
 import { FormError } from '../components/FormError.jsx';
 
 export default function SignupPage() {
+  const { isAuthenticated } = useAuthStore();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const { mutate: signup, isPending } = useSignup();
+  const { mutate: signup, isPending, error: signupError } = useSignup();
 
   const {
     register,
@@ -38,6 +40,10 @@ export default function SignupPage() {
     },
   });
 
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
   // Debounced validator: 600ms pause ke baad hi confirm password validate hoga
   const debouncedValidateConfirm = useDebouncedCallback(() => {
     trigger('confirmPassword');
@@ -47,16 +53,26 @@ export default function SignupPage() {
     signup(data);
   }
 
+  const serverErrorMessage = signupError?.response?.data?.message;
+
   return (
     <AuthLayout
       title="Create your account"
       subtitle="Start managing projects with your team"
     >
+      {serverErrorMessage && (
+        <div className="mb-4 flex items-start gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
+          <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+          <span>{serverErrorMessage}</span>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="name">Full name</Label>
           <Input
             id="name"
+            placeholder="Sarah Connor"
             autoComplete="name"
             {...register('name')}
             aria-invalid={!!errors.name}
@@ -69,6 +85,7 @@ export default function SignupPage() {
           <Input
             id="email"
             type="email"
+            placeholder="you@company.com"
             autoComplete="email"
             {...register('email')}
             aria-invalid={!!errors.email}
@@ -83,6 +100,7 @@ export default function SignupPage() {
               id="password"
               type={showPassword ? 'text' : 'password'}
               autoComplete="new-password"
+              placeholder="••••••••"
               className="pr-10"
               {...register('password', {
                 onChange: () => {
@@ -116,10 +134,10 @@ export default function SignupPage() {
               id="confirmPassword"
               type={showConfirmPassword ? 'text' : 'password'}
               autoComplete="new-password"
+              placeholder="••••••••"
               className="pr-10"
               {...register('confirmPassword', {
                 onChange: () => {
-                  // Typing ke dauran premature error hide rakho, aur 600ms pause par validate karo
                   clearErrors('confirmPassword');
                   debouncedValidateConfirm();
                 },
