@@ -8,9 +8,6 @@ const required = [
   'JWT_ACCESS_SECRET',
   'JWT_REFRESH_SECRET',
   'CLIENT_URL',
-  'GOOGLE_CLIENT_ID',
-  'GOOGLE_CLIENT_SECRET',
-  'GOOGLE_CALLBACK_URL',
 ];
 
 for (const key of required) {
@@ -32,8 +29,14 @@ export const env = {
   clientUrl: process.env.CLIENT_URL,
   frontendUrl: process.env.FRONTEND_URL || process.env.CLIENT_URL || 'https://projectify-steel.vercel.app',
   google: {
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    isConfigured: Boolean(
+      process.env.GOOGLE_CLIENT_ID &&
+      !process.env.GOOGLE_CLIENT_ID.includes('your_client_id') &&
+      process.env.GOOGLE_CLIENT_SECRET &&
+      !process.env.GOOGLE_CLIENT_SECRET.includes('your_secret')
+    ),
+    clientId: process.env.GOOGLE_CLIENT_ID || '',
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
     callbackUrl: (process.env.NODE_ENV === 'production' || process.env.RENDER === 'true') && (!process.env.GOOGLE_CALLBACK_URL || process.env.GOOGLE_CALLBACK_URL.includes('localhost'))
       ? 'https://projectify-api-yogd.onrender.com/api/auth/google/callback'
       : (process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/auth/google/callback'),

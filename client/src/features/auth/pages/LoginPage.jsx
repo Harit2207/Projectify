@@ -36,7 +36,9 @@ export default function LoginPage() {
   }
 
   const urlErrorMessage =
-    errorParam === 'google_failed'
+    errorParam === 'google_not_configured'
+      ? 'Google sign-in is not configured on this server. Please sign in with email and password.'
+      : errorParam === 'google_failed'
       ? 'Google sign-in was cancelled or failed. Please try again or use your email and password.'
       : errorParam === 'session_expired'
       ? 'Your session has expired. Please sign in again.'

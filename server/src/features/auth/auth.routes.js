@@ -3,6 +3,7 @@ import passport from 'passport';
 import { validate } from '../../core/middleware/validate.js';
 import { authenticate } from '../../core/middleware/authenticate.js';
 import { authLimiter } from '../../core/middleware/rateLimiter.js';
+import { env } from '../../config/env.js';
 import {
   signupSchema,
   loginSchema,
@@ -24,6 +25,16 @@ const router = Router();
 
 router.use(authLimiter);
 
+// Public auth configuration status
+router.get('/config', (req, res) => {
+  res.json({
+    success: true,
+    data: {
+      googleAuthEnabled: env.google.isConfigured,
+    },
+  });
+});
+
 // Email / Password Auth routes
 router.post('/signup', validate(signupSchema), signupController);
 router.post('/login', validate(loginSchema), loginController);
@@ -36,21 +47,32 @@ router.post('/reset-password', validate(resetPasswordSchema), resetPasswordContr
 
 router.get('/me', authenticate, getMeController);
 
-router.get(
-  '/google',
-  passport.authenticate('google', {
+// Google OAuth routes with graceful missing-credential handling
+router.get('/google', (req, res, next) => {
+  if (!env.google.isConfigured) {
+    const targetUrl = env.frontendUrl || env.clientUrl || 'https://projectify-steel.vercel.app';
+    return res.redirect(`${targetUrl}/login?error=google_not_configured`);
+  }
+  return passport.authenticate('google', {
     scope: ['profile', 'email'],
     session: false,
     prompt: 'select_account',
-  }),
-);
+  })(req, res, next);
+});
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', {
-    session: false,
-    failureRedirect: `${process.env.FRONTEND_URL || process.env.CLIENT_URL || 'https://projectify-steel.vercel.app'}/login?error=google_failed`,
-  }),
+  (req, res, next) => {
+    if (!env.google.isConfigured) {
+      const targetUrl = env.frontendUrl || env.clientUrl || 'https://projectify-steel.vercel.app';
+      return res.redirect(`${targetUrl}/login?error=google_not_configured`);
+    }
+    const failureUrl = `${env.frontendUrl || env.clientUrl || 'https://projectify-steel.vercel.app'}/login?error=google_failed`;
+    return passport.authenticate('google', {
+      session: false,
+      failureRedirect: failureUrl,
+    })(req, res, next);
+  },
   googleCallbackController,
 );
 

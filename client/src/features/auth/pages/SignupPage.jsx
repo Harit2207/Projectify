@@ -53,6 +53,17 @@ export default function SignupPage() {
     signup(data);
   }
 
+  const location = window.location;
+  const searchParams = new URLSearchParams(location.search);
+  const errorParam = searchParams.get('error');
+
+  const urlErrorMessage =
+    errorParam === 'google_not_configured'
+      ? 'Google sign-in is not configured on this server. Please create an account with email and password.'
+      : errorParam === 'google_failed'
+      ? 'Google sign-in was cancelled or failed. Please try again or create an account with email and password.'
+      : null;
+
   const serverErrorMessage = signupError?.response?.data?.message;
 
   return (
@@ -60,7 +71,14 @@ export default function SignupPage() {
       title="Create your account"
       subtitle="Start managing projects with your team"
     >
-      {serverErrorMessage && (
+      {urlErrorMessage && (
+        <div className="mb-4 flex items-start gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
+          <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+          <span>{urlErrorMessage}</span>
+        </div>
+      )}
+
+      {serverErrorMessage && !urlErrorMessage && (
         <div className="mb-4 flex items-start gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive border border-destructive/20">
           <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
           <span>{serverErrorMessage}</span>
