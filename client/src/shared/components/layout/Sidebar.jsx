@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   FolderKanban,
+  Building2,
   Users,
   Settings,
   ChevronLeft,
