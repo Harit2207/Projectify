@@ -4,26 +4,47 @@ import { useAuthStore } from '../store/authStore.js';
 import { authService } from '../../features/auth/services/authService.js';
 
 export function AuthProvider({ children }) {
-  const { setAuth, clearAuth } = useAuthStore();
+  const { setAuth, setToken, clearAuth } = useAuthStore();
+  const [authReady, setAuthReady] = useState(false);
+
+  // 1. Immediately capture token from URL query string if redirected from Google OAuth
+  useEffect(() => {
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = searchParams.get('token');
+      if (tokenFromUrl) {
+        setToken(tokenFromUrl);
+        localStorage.setItem('token', tokenFromUrl);
+        // Clean token from address bar without reloading
+        const cleanUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    } catch (e) {
+      console.error('Error parsing auth token from URL:', e);
+    }
+  }, [setToken]);
 
   const { isLoading, data, isError } = useQuery({
     queryKey: ['auth', 'me'],
     queryFn: authService.getMe,
-    retry: false,
+    retry: 1,
     staleTime: 5 * 60 * 1000,
   });
 
-  // Becomes true once, after the first /auth/me response has been written into
-  // the auth store. Routes must not render before that: ProtectedRoute would
-  // otherwise see the stale persisted isAuthenticated=false (for example right
-  // after the Google redirect) and send the user to /login.
-  const [authReady, setAuthReady] = useState(false);
-
   useEffect(() => {
     if (isLoading) return;
-    if (data) setAuth(data);
-    else if (isError) clearAuth();
-    setAuthReady(true);
+    if (data) {
+      const existingToken = useAuthStore.getState().token || localStorage.getItem('token');
+      setAuth(data, existingToken);
+      setAuthReady(true);
+    } else if (isError) {
+      // If error occurs, check if token is valid or expired
+      const token = useAuthStore.getState().token || localStorage.getItem('token');
+      if (!token) {
+        clearAuth();
+      }
+      setAuthReady(true);
+    }
   }, [isLoading, data, isError, setAuth, clearAuth]);
 
   if (isLoading || !authReady) {

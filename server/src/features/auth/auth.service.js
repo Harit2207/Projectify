@@ -105,9 +105,14 @@ export async function handleGoogleCallback(user, res) {
   user.lastLoginAt = new Date();
   await user.save({ validateBeforeSave: false });
 
-  issueTokens(res, user._id);
+  const payload = { userId: user._id.toString() };
+  const accessToken = signAccessToken(payload);
+  const refreshToken = signRefreshToken(payload);
+  setAccessTokenCookie(res, accessToken);
+  setRefreshTokenCookie(res, refreshToken);
 
   logger.info('Google OAuth login', { userId: user._id });
+  return { user: user.toSafeObject(), accessToken, refreshToken };
 }
 
 // ── Forgot password ───────────────────────────────────────────────

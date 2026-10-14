@@ -48,7 +48,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     session: false,
-    failureRedirect: `${process.env.CLIENT_URL}/login?error=google_failed`,
+    failureRedirect: `${process.env.FRONTEND_URL || process.env.CLIENT_URL || 'https://projectify-steel.vercel.app'}/login?error=google_failed`,
   }),
   googleCallbackController,
 );

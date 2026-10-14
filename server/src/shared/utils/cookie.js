@@ -1,9 +1,10 @@
 import { env } from '../../config/env.js';
 
+const isProd = env.isProduction || process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
 const BASE_OPTION = {
     httpOnly: true,
-    secure: env.isProduction,
-    sameSite: env.isProduction ? 'none' : 'lax',
+    secure: isProd,
+    sameSite: isProd ? 'none' : 'lax',
     path: '/',
 };
 

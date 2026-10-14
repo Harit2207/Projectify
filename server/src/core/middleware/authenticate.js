@@ -12,9 +12,9 @@ export const authenticate = asyncHandler(async (req, res, next) => {
 //     console.log('path:', req.path);
 
 
-    const token = req.cookies?.accessToken;
-
-    
+    const authHeader = req.headers.authorization;
+    const bearerToken = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
+    const token = req.cookies?.accessToken || bearerToken;
 
     if (!token) {
         throw new UnauthorizedError('No token provided');

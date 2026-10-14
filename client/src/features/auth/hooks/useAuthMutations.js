@@ -19,8 +19,11 @@ export function useLogin() {
 
   return useMutation({
     mutationFn: authService.login,
-    onSuccess: (user) => {
-      setAuth(user);
+    onSuccess: (data) => {
+      const user = data.user || data;
+      const token = data.accessToken || null;
+      setAuth(user, token);
+      if (token) localStorage.setItem('token', token);
       queryClient.setQueryData(['auth', 'me'], user);
       navigate('/dashboard');
       toast.success(`Welcome back, ${user.name}`);
@@ -37,8 +40,12 @@ export function useSignup() {
 
   return useMutation({
     mutationFn: authService.signup,
-    onSuccess: (user) => {
-      setAuth(user);
+    onSuccess: (data) => {
+      const user = data.user || data;
+      const token = data.accessToken || null;
+      setAuth(user, token);
+      if (token) localStorage.setItem('token', token);
+      queryClient.setQueryData(['auth', 'me'], user);
       navigate('/dashboard');
       toast.success('Account created successfully');
     },

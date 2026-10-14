@@ -21,7 +21,13 @@ function processQueue(error) {
 }
 
 export function setupInterceptors() {
-  apiClient.interceptors.request.use((config) => config);
+  apiClient.interceptors.request.use((config) => {
+    const token = useAuthStore.getState().token || localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
   apiClient.interceptors.response.use(
     (response) => response,

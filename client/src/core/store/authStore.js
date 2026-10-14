@@ -5,10 +5,26 @@ export const useAuthStore = create(
   persist(
     (set) => ({
       user: null,
+      token: null,
       isAuthenticated: false,
 
-      setAuth: (user) => set({ user, isAuthenticated: true }),
-      clearAuth: () => set({ user: null, isAuthenticated: false }),
+      setAuth: (user, token = null) =>
+        set((state) => ({
+          user,
+          token: token || state.token,
+          isAuthenticated: true,
+        })),
+      setToken: (token) =>
+        set((state) => ({
+          token,
+          isAuthenticated: Boolean(token || state.user),
+        })),
+      clearAuth: () => {
+        try {
+          localStorage.removeItem('token');
+        } catch {}
+        set({ user: null, token: null, isAuthenticated: false });
+      },
       updateUser: (partial) =>
         set((state) => ({ user: { ...state.user, ...partial } })),
     }),
@@ -23,6 +39,7 @@ export const useAuthStore = create(
               avatar: state.user.avatar,
             }
           : null,
+        token: state.token,
         isAuthenticated: state.isAuthenticated,
       }),
     },

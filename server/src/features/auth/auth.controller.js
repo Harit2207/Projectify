@@ -29,8 +29,10 @@ export const refreshController = asyncHandler(async (req, res) => {
 });
 
 export const googleCallbackController = asyncHandler(async (req, res) => {
-  await authService.handleGoogleCallback(req.user, res);
-  res.redirect(`${env.clientUrl}/dashboard`);
+  const result = await authService.handleGoogleCallback(req.user, res);
+  const targetUrl = env.frontendUrl || env.clientUrl || 'https://projectify-steel.vercel.app';
+  // Pass accessToken as query parameter so cross-domain SPAs can authenticate immediately even when third-party cookies are blocked
+  res.redirect(`${targetUrl}/dashboard?token=${encodeURIComponent(result.accessToken)}`);
 });
 
 export const forgotPasswordController = asyncHandler(async (req, res) => {

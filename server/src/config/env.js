@@ -34,7 +34,9 @@ export const env = {
   google: {
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackUrl: process.env.GOOGLE_CALLBACK_URL,
+    callbackUrl: (process.env.NODE_ENV === 'production' || process.env.RENDER === 'true') && (!process.env.GOOGLE_CALLBACK_URL || process.env.GOOGLE_CALLBACK_URL.includes('localhost'))
+      ? 'https://projectify-api-yogd.onrender.com/api/auth/google/callback'
+      : (process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/auth/google/callback'),
   },
   email: {
     provider: process.env.EMAIL_PROVIDER || (process.env.BREVO_API_KEY ? 'brevo' : (process.env.RESEND_API_KEY ? 'resend' : 'smtp')),
