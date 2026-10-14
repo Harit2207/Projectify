@@ -50,6 +50,11 @@ export function Sidebar({ isMobile }) {
       href: '/dashboard',
     },
     {
+      label: 'Workspaces',
+      icon: Building2,
+      href: '/workspaces',
+    },
+    {
       label: 'Search',
       icon: Search,
       href: workspaceId

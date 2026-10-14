@@ -2,7 +2,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useCreateWorkspace } from '../hooks/useWorkspaceQueries.js';
+import { useUiStore } from '../../../core/store/uiStore.js';
 import {
   Dialog,
   DialogContent,
@@ -26,6 +28,8 @@ const schema = z.object({
 });
 
 export function CreateWorkspaceModal({ open, onClose }) {
+  const navigate = useNavigate();
+  const { closeSidebar } = useUiStore();
   const { mutate: create, isPending } = useCreateWorkspace();
 
   const {
@@ -37,9 +41,14 @@ export function CreateWorkspaceModal({ open, onClose }) {
 
   function onSubmit(data) {
     create(data, {
-      onSuccess: () => {
+      onSuccess: (newWorkspace) => {
         reset();
         onClose();
+        closeSidebar();
+        const wsId = newWorkspace?._id || newWorkspace?.id;
+        if (wsId) {
+          navigate(`/workspace/${wsId}/projects`);
+        }
       },
     });
   }

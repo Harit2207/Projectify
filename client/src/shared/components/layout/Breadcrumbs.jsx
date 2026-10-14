@@ -16,26 +16,36 @@ export function Breadcrumbs() {
     projectId,
   });
 
-  if (crumbs.length <= 1) return null;
+  if (crumbs.length === 0) return null;
+
+  const currentCrumb = crumbs[crumbs.length - 1];
 
   return (
-    <nav aria-label="breadcrumb">
-      <ol className="flex items-center gap-1 text-sm">
+    <nav aria-label="breadcrumb" className="min-w-0 overflow-hidden">
+      {/* Mobile view: Show ONLY current active page title to avoid crowding topbar */}
+      <div className="flex items-center md:hidden min-w-0">
+        <span className="font-semibold text-sm text-foreground truncate max-w-[160px] sm:max-w-[220px]">
+          {currentCrumb.label}
+        </span>
+      </div>
+
+      {/* Desktop view (md+): Show complete hierarchy */}
+      <ol className="hidden md:flex items-center gap-1.5 text-sm min-w-0 overflow-hidden">
         {crumbs.map((crumb, i) => {
           const isLast = i === crumbs.length - 1;
           return (
-            <li key={crumb.href} className="flex items-center gap-1">
+            <li key={crumb.href || i} className="flex items-center gap-1.5 min-w-0 flex-shrink-0">
               {i > 0 && (
                 <ChevronRight className="h-3.5 w-3.5 text-muted-foreground flex-shrink-0" />
               )}
               {isLast ? (
-                <span className="font-medium truncate max-w-[180px]">
+                <span className="font-medium text-foreground truncate max-w-[160px] lg:max-w-[220px]">
                   {crumb.label}
                 </span>
               ) : (
                 <Link
                   to={crumb.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors truncate max-w-[120px]"
+                  className="text-muted-foreground hover:text-foreground transition-colors truncate max-w-[120px] lg:max-w-[160px]"
                 >
                   {crumb.label}
                 </Link>
@@ -82,8 +92,15 @@ function buildCrumbs(
       href: `/workspace/${workspaceId}/projects`,
     });
     crumbs.push({
-      label: `${project.emoji} ${project.name}`,
+      label: `${project.emoji ? project.emoji + ' ' : ''}${project.name}`,
       href: `/workspace/${workspaceId}/board/${projectId}`,
+    });
+  }
+
+  if (pathname.includes('/members')) {
+    crumbs.push({
+      label: 'Members',
+      href: `/workspace/${workspaceId}/members`,
     });
   }
 

@@ -26,6 +26,16 @@ export function WorkspaceSwitcher() {
     navigate(`/workspace/${workspace._id}/projects`);
   }
 
+  function handleCreateClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpen(false);
+    // Timeout decouples Popover unmounting from Dialog mount to prevent pointer lock on mobile
+    setTimeout(() => {
+      setShowCreate(true);
+    }, 120);
+  }
+
   const currentId =
     currentWorkspace?.id ?? currentWorkspace?._id;
 
@@ -75,11 +85,9 @@ export function WorkspaceSwitcher() {
           <Separator className="my-1" />
 
           <button
-            onClick={() => {
-              setOpen(false);
-              setShowCreate(true);
-            }}
-            className="w-full flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent transition-colors text-left text-muted-foreground"
+            type="button"
+            onClick={handleCreateClick}
+            className="w-full flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent transition-colors text-left text-muted-foreground cursor-pointer"
           >
             <Plus className="h-4 w-4" />
             Create workspace

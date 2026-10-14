@@ -39,32 +39,32 @@ export function Topbar() {
 
   return (
     <>
-      <header className="h-14 border-b flex items-center gap-3 px-4 flex-shrink-0 bg-background">
+      <header className="h-14 border-b flex items-center gap-2 sm:gap-3 px-3 sm:px-4 flex-shrink-0 bg-background">
         <Button
           variant="ghost"
           size="icon"
-          className="h-8 w-8 md:hidden"
+          className="h-8 w-8 md:hidden flex-shrink-0"
           onClick={toggleSidebar}
         >
           <Menu className="h-4 w-4" />
         </Button>
 
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 overflow-hidden">
           <Breadcrumbs />
         </div>
 
         {!isConnected && (
-          <div className="flex items-center gap-1.5 text-xs text-amber-500 bg-amber-500/10 px-2 py-1 rounded-full">
+          <div className="flex items-center gap-1.5 text-xs text-amber-500 bg-amber-500/10 px-2 py-1 rounded-full flex-shrink-0">
             <WifiOff className="h-3 w-3" />
             <span className="hidden sm:inline">Reconnecting...</span>
           </div>
         )}
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0 ml-auto">
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8"
+            className="h-8 w-8 flex-shrink-0"
             onClick={() => setSearchOpen(true)}
           >
             <Search className="h-4 w-4" />
@@ -78,7 +78,7 @@ export function Topbar() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="h-8 w-8 rounded-full p-0"
+                className="h-8 w-8 rounded-full p-0 flex-shrink-0"
               >
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={user?.avatar} alt={user?.name} />
@@ -97,7 +97,6 @@ export function Topbar() {
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="text-destructive focus:text-destructive cursor-pointer"
