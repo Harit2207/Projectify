@@ -31,9 +31,12 @@ export function Sidebar({ isMobile }) {
   const { data: projects, isLoading: loadingProjects } =
     useProjects(workspaceId);
 
+  // Close mobile sidebar ONLY on route navigation
   useEffect(() => {
-    if (isMobile && isSidebarOpen) toggleSidebar();
-  }, [isMobile, isSidebarOpen, location.pathname, toggleSidebar]);
+    if (isMobile) {
+      useUiStore.getState().closeSidebar();
+    }
+  }, [location.pathname, isMobile]);
 
   function isActive(href) {
     if (href === location.pathname) return true;
@@ -60,8 +63,8 @@ export function Sidebar({ isMobile }) {
       className={cn(
         'flex flex-col bg-background border-r transition-all duration-200 z-30',
         'h-screen flex-shrink-0',
-        isMobile ? 'fixed' : 'relative',
-        isSidebarOpen ? 'w-60' : 'w-14',
+        isMobile ? 'fixed inset-y-0 left-0' : 'relative',
+        isSidebarOpen ? (isMobile ? 'w-64' : 'w-60') : 'w-14',
         isMobile && !isSidebarOpen && '-translate-x-full',
         isMobile && isSidebarOpen && 'translate-x-0 shadow-xl',
       )}

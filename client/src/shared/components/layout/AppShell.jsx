@@ -8,7 +8,7 @@ import { useWorkspaceSocket } from '../../../core/hooks/useWorkspaceSocket.js';
 import { useWorkspaces } from '../../../features/workspace/hooks/useWorkspaceQueries.js';
 
 export function AppShell() {
-  const { isSidebarOpen, toggleSidebar } = useUiStore();
+  const { isSidebarOpen, toggleSidebar, closeSidebar } = useUiStore();
   const { currentWorkspace, setCurrentWorkspace } = useWorkspaceStore();
   const { data: workspaces } = useWorkspaces();
   const [isMobile, setIsMobile] = useState(false);
@@ -22,11 +22,17 @@ export function AppShell() {
   useWorkspaceSocket(currentWorkspace?.id ?? currentWorkspace?._id);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        closeSidebar();
+      }
+    };
     check();
     window.addEventListener('resize', check);
     return () => window.removeEventListener('resize', check);
-  }, []);
+  }, [closeSidebar]);
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -34,8 +40,9 @@ export function AppShell() {
 
       {isMobile && isSidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-black/50"
+          className="fixed inset-0 z-20 bg-black/50 transition-opacity"
           onClick={toggleSidebar}
+          aria-hidden="true"
         />
       )}
 
