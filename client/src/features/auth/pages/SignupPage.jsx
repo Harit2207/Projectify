@@ -40,14 +40,14 @@ export default function SignupPage() {
     },
   });
 
-  if (isAuthenticated) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
   // Debounced validator: 600ms pause ke baad hi confirm password validate hoga
   const debouncedValidateConfirm = useDebouncedCallback(() => {
     trigger('confirmPassword');
   }, 600);
+
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   function onSubmit({ confirmPassword: _confirm, ...data }) {
     signup(data);

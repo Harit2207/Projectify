@@ -22,7 +22,9 @@ export const useAuthStore = create(
       clearAuth: () => {
         try {
           localStorage.removeItem('token');
-        } catch {}
+        } catch (_err) {
+          // ignore
+        }
         set({ user: null, token: null, isAuthenticated: false });
       },
       updateUser: (partial) =>

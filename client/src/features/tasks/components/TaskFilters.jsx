@@ -43,7 +43,7 @@ export function TaskFilters({
     if (!filters.search && searchInput) {
       setSearchInput('');
     }
-  }, [filters.search]);
+  }, [filters.search, searchInput]);
 
   function handleClearAll() {
     setSearchInput('');

@@ -2,9 +2,9 @@
 
 <div align="center">
 
+<img src="docs/images/banner.png" alt="Projectify Banner" width="100%">
 
-
-<p align="center"> <img src="docs/images/banner.png" alt="Projectify Banner" width="100%"> </p> <p align="center">  </p>
+<br/><br/>
 
 **A production-grade multi-tenant project management platform with real-time collaboration, asynchronous email queues, and role-based permissions.**
 
@@ -20,7 +20,7 @@ Built by **[Harit Gevariya](https://github.com/Harit2207)**
 > 🔑 **Demo Credentials:** `demo@projectify.dev` / `Demo@1234`
 
 [![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
-[![Express](https://img.shields.io/badge/Express-4.x-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com)
+[![Express](https://img.shields.io/badge/Express-5.x-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com)
 [![Redis](https://img.shields.io/badge/Redis-Upstash-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://upstash.com)
 [![Socket.io](https://img.shields.io/badge/Socket.io-4.x-010101?style=for-the-badge&logo=socketdotio&logoColor=white)](https://socket.io)
@@ -43,8 +43,6 @@ The goal wasn't just to clone an existing tool, but to solve the real engineerin
 * **Asynchronous Resilience:** In-memory background email worker queue with exponential backoff retries (3s, 6s).
 * **Kanban Performance:** $O(1)$ drag-and-drop card reordering using floating-point fractional indexing.
 * **Targeted Real-time:** Room-scoped Socket.io events preventing broadcast floods across 500+ active users.
-
----
 
 ---
 
@@ -77,9 +75,8 @@ Projectify follows a feature-based layered architecture where the React (Vite) f
 - **Tiered Rate Limiting** — Three Redis-backed tiers: auth (10/15min), API (60/min), global (200/15min)
 - **Security Stack** — Helmet, CSRF protection, NoSQL injection sanitization, HPP
 - **Structured Logging** — Winston with JSON output in production, request ID tracing on every log line
-- **Background Email Queue & Templates** — In-memory asynchronous job queue with exponential backoff retries (3s, 6s) and rate-limiting protection. Dispatches real HTML emails via Nodemailer (Gmail/SMTP) for Welcome Onboarding, Password Resets (15-min SHA-256 tokens), Workspace Invites, and Task Assignments
+- **Background Email Queue & Templates** — In-memory asynchronous job queue with exponential backoff retries (3s, 6s) and rate-limiting protection. Dispatches real HTML emails via Brevo HTTPS REST API (production) and Nodemailer SMTP (local development) for Welcome Onboarding, Password Resets (15-min SHA-256 tokens), Workspace Invites, and Task Assignments
 - **Password Reset Security** — Crypto-generated SHA-256 hash tokens stored in DB with 15-minute expiration window to prevent brute force or replay attacks
-
 
 ### Frontend
 - **Kanban Board** — Drag and drop with `@dnd-kit`, optimistic updates with rollback on failure
@@ -93,7 +90,6 @@ Projectify follows a feature-based layered architecture where the React (Vite) f
 - **Forgot & Reset Password Views** — Complete multi-step password recovery flow with live password strength meters and toggleable visibility
 
 ---
----
 
 # 🔐 Authentication Flow
 
@@ -101,12 +97,13 @@ Projectify follows a feature-based layered architecture where the React (Vite) f
   <img
     src="docs/images/authentication-flow.png"
     alt="Authentication Flow"
-    width="40%">
+    width="65%">
 </p>
 
 Projectify uses a dual-token authentication system with HttpOnly cookies, Google OAuth, automatic token refresh, and request queuing to eliminate refresh race conditions.
 
 ---
+
 ## Tech Stack
 
 ### Backend
@@ -144,7 +141,7 @@ Projectify/
 │   │   │   ├── db.js                # MongoDB connection
 │   │   │   ├── redis.js             # Redis/Upstash client
 │   │   │   ├── env.js               # Env validation
-│   │   │  
+│   │   │   └── passport.js          # Google OAuth Passport strategy
 │   │   ├── core/
 │   │   │   ├── errors/              # Custom error classes
 │   │   │   ├── logger/              # Winston setup
@@ -221,7 +218,7 @@ REDIS_URL=rediss://default:password@your-instance.upstash.io:6379
 JWT_ACCESS_SECRET=your_64_char_hex_here
 JWT_REFRESH_SECRET=different_64_char_hex_here
 
-# Frontend URL (for CORS)
+# Frontend URL (for CORS and redirect links)
 CLIENT_URL=http://localhost:5173
 
 # Google OAuth — from console.cloud.google.com
@@ -229,7 +226,9 @@ GOOGLE_CLIENT_ID=your_client_id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=GOCSPX-your_secret
 GOOGLE_CALLBACK_URL=http://localhost:5000/api/auth/google/callback
 
-# Email (Gmail SMTP with Background Worker Queue)
+# Transactional Email (Brevo HTTPS REST API on port 443 / Nodemailer SMTP)
+EMAIL_PROVIDER=brevo
+BREVO_API_KEY=your_brevo_api_key
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
 SMTP_USER=your_email@gmail.com
@@ -276,13 +275,9 @@ Password: Demo@1234
 ```bash
 cd ../client
 npm install
-
-# Install Shadcn UI components
-npx shadcn-ui@latest init
-npx shadcn-ui@latest add button input label textarea card dialog dropdown-menu \
-  select avatar badge separator progress skeleton scroll-area popover \
-  collapsible command tooltip
 ```
+
+*(Note: All Shadcn UI components are already pre-configured in `src/shared/components/ui`)*
 
 Create `client/.env`:
 
@@ -300,13 +295,10 @@ Open `http://localhost:5173`
 
 ---
 
+## API Documentation
 
-
-Raw OpenAPI JSON:
-
-```
-http://localhost:5000/api/docs.json
-```
+A complete Postman collection is included in the repository for testing and exploring all endpoints:
+- **Postman Collection:** [`docs/postman/Task-management.postman_collection.json`](docs/postman/Task-management.postman_collection.json)
 
 ### Quick endpoint reference
 
@@ -389,13 +381,12 @@ Directly awaiting SMTP email delivery inside controllers introduces a 2–3 seco
 | express-mongo-sanitize | NoSQL injection (`$gt`, `$where` operators) |
 | HPP | HTTP parameter pollution |
 | Custom CSRF header | Cross-site request forgery |
-| SameSite=Lax cookies | CSRF on cross-site requests |
+| SameSite cookies (Lax dev / None + Secure prod) | CSRF and secure cross-domain session persistence |
 | HttpOnly cookies | XSS-based token theft |
 | Redis rate limiting (3 tiers) | Brute force, credential stuffing |
 | Zod validation | Malformed and malicious input |
 | validateObjectId middleware | MongoDB CastError crashes |
 
----
 ---
 
 # 🛡️ Security Middleware Pipeline
@@ -404,12 +395,13 @@ Directly awaiting SMTP email delivery inside controllers introduces a 2–3 seco
   <img
     src="docs/images/security_middleware_stack.png"
     alt="Security Middleware Pipeline"
-    width="50%">
+    width="55%">
 </p>
 
 Every incoming request passes through multiple middleware layers before reaching business logic. Each layer removes a specific attack vector such as XSS, CSRF, NoSQL injection, brute-force attacks, malformed input, or unauthorized access.
 
 ---
+
 ## Known Limitations
 
 These are deliberate tradeoffs, not oversights:
@@ -434,15 +426,17 @@ These are deliberate tradeoffs, not oversights:
 | `REDIS_URL` | Upstash → Database → Details tab → Redis Connect URL (`rediss://`) |
 | `JWT_ACCESS_SECRET` | Generate: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` |
 | `JWT_REFRESH_SECRET` | Same command, different value |
-| `CLIENT_URL` | Your frontend URL (`http://localhost:5173` locally) |
-| `SMTP_HOST` | SMTP host (e.g. `smtp.gmail.com`) |
+| `CLIENT_URL` | Your frontend URL (`http://localhost:5173` locally, Vercel URL in prod) |
+| `EMAIL_PROVIDER` | `brevo` (recommended for production) or `smtp` (local dev) |
+| `BREVO_API_KEY` | Brevo Dashboard → SMTP & API → API Keys (`xkeysib-...`) |
+| `SMTP_HOST` | SMTP host (e.g. `smtp.gmail.com` for local dev) |
 | `SMTP_PORT` | SMTP port (`465` for SSL, `587` for TLS) |
 | `SMTP_USER` | Gmail address used to dispatch notifications |
 | `SMTP_PASS` | Google Account → Security → 2-Step Verification → App Passwords (16-char) |
 | `SMTP_FROM` | Sender display name and email (e.g. `Projectify <your@email.com>`) |
 | `GOOGLE_CLIENT_ID` | Google Cloud Console → APIs & Services → Credentials → OAuth 2.0 Client |
 | `GOOGLE_CLIENT_SECRET` | Same as above |
-| `GOOGLE_CALLBACK_URL` | Must match exactly what you set in Google Console |
+| `GOOGLE_CALLBACK_URL` | Must match exactly what you set in Google Console (including `/api/auth/google/callback`) |
 
 ---
 
@@ -457,7 +451,6 @@ The server emits to scoped rooms — not broadcast.
 | `user:{id}` | User connects (automatic) | `notification:new` |
 
 ---
----
 
 # ⚡ Real-time Architecture
 
@@ -471,39 +464,37 @@ The server emits to scoped rooms — not broadcast.
 Every task update is scoped to Socket.io rooms. Only users currently viewing the relevant project receive updates, eliminating unnecessary broadcasts.
 
 ---
+
 ## Scripts
 
 ### Backend
 
 ```bash
-npm run dev       # Start with nodemon (hot reload)
-npm start         # Production start
-npm run lint      # ESLint check
-
-# Seeder
-node src/seeders/seed.js           # Add demo data
-node src/seeders/seed.js --clear   # Clear all + reseed
+npm run dev          # Start with nodemon (hot reload)
+npm start            # Production start
+npm run seed         # Populate database with realistic demo data
+npm run seed:clear   # Clear all collections + reseed demo data
 ```
 
 ### Frontend
 
 ```bash
-npm run dev       # Vite dev server with HMR
-npm run build     # Production build
-npm run preview   # Preview production build
-npm run lint      # ESLint check
+npm run dev          # Vite dev server with HMR
+npm run build        # Production bundle build
+npm run preview      # Preview production build locally
+npm run lint         # ESLint check
 ```
 
 ---
 
 ## Deployment
 
-### Backend (Railway / Render / Fly.io)
+### Backend (Render / Railway / Fly.io)
 
 1. Set all environment variables in the dashboard
 2. Set `NODE_ENV=production`
-3. Set `CLIENT_URL` to your deployed frontend URL
-4. Update `GOOGLE_CALLBACK_URL` to your production backend URL
+3. Set `CLIENT_URL` to your deployed frontend URL (`https://projectify-steel.vercel.app`)
+4. Set `GOOGLE_CALLBACK_URL` to your production callback URL (e.g. `https://<backend-app>.onrender.com/api/auth/google/callback`)
 5. In Google Cloud Console, add the production callback URL to authorized redirect URIs
 
 ### Frontend (Vercel / Netlify)
@@ -514,17 +505,15 @@ npm run lint      # ESLint check
 
 ---
 
-
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
-
 ---
+
 ## 👨‍💻 Author
 
-**Harit Gevariya**  
-*Full-Stack Software Engineer*
+**Harit Gevariya**
 
 - **GitHub:** [@Harit2207](https://github.com/Harit2207)
 - **Repository:** [Projectify](https://github.com/Harit2207/Projectify)
@@ -533,4 +522,3 @@ MIT License — see [LICENSE](LICENSE) for details.
 Built as a production-grade full-stack project management platform solving real-world engineering challenges: secure dual-token HttpOnly authentication, real-time room-scoped Socket.io collaboration, O(1) fractional indexing in Kanban boards, in-memory asynchronous background email worker queues, and multi-tenant role-based access control.
 
 If you found this project helpful or learned something from it, consider giving it a ⭐ to support the project!
-
