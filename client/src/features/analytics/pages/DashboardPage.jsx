@@ -1,4 +1,6 @@
 import { useWorkspaceStore } from '../../../core/store/workspaceStore.js';
+import { useUiStore } from '../../../core/store/uiStore.js';
+import { Button } from '../../../shared/components/ui/button.jsx';
 import { useWorkspaceStats } from '../hooks/useAnalyticsQueries.js';
 import { PageShell } from '../../../shared/components/layout/PageShell.jsx';
 import { StatCard } from '../components/StatCard.jsx';
@@ -12,10 +14,12 @@ import {
   FolderKanban,
   AlertTriangle,
   TrendingUp,
+  Plus,
 } from 'lucide-react';
 
 export default function DashboardPage() {
   const { currentWorkspace } = useWorkspaceStore();
+  const { openCreateWorkspace } = useUiStore();
   const workspaceId = currentWorkspace?.id ?? currentWorkspace?._id;
 
   const { data: stats, isLoading } = useWorkspaceStats(workspaceId);
@@ -26,6 +30,12 @@ export default function DashboardPage() {
         <EmptyState
           title="No workspace selected"
           description="Select or create a workspace to see your dashboard"
+          action={
+            <Button onClick={openCreateWorkspace}>
+              <Plus className="mr-2 h-4 w-4" />
+              Create workspace
+            </Button>
+          }
         />
       </PageShell>
     );

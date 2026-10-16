@@ -8,6 +8,7 @@ import {
 } from '../hooks/useWorkspaceQueries.js';
 import { useAuthStore } from '../../../core/store/authStore.js';
 import { useWorkspaceStore } from '../../../core/store/workspaceStore.js';
+import { useUiStore } from '../../../core/store/uiStore.js';
 import { useQueryClient } from '@tanstack/react-query';
 import { workspaceKeys } from '../hooks/useWorkspaceQueries.js';
 import { Button } from '../../../shared/components/ui/button.jsx';
@@ -15,11 +16,9 @@ import { PageShell } from '../../../shared/components/layout/PageShell.jsx';
 import { EmptyState } from '../../../shared/components/feedback/EmptyState.jsx';
 import { WorkspaceSkeleton } from '../../../shared/components/feedback/WorkspaceSkeleton.jsx';
 import { WorkspaceCard } from '../components/WorkspaceCard.jsx';
-import { CreateWorkspaceModal } from '../components/CreateWorkspaceModal.jsx';
 import { ConfirmDialog } from '../../../shared/components/modals/ConfirmDialog.jsx';
 
 export default function WorkspacesPage() {
-  const [showCreate, setShowCreate] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [leaveTarget, setLeaveTarget] = useState(null);
   const navigate = useNavigate();
@@ -33,6 +32,7 @@ export default function WorkspacesPage() {
     useDeleteWorkspace();
   const { mutate: removeMember, isPending: isLeaving } = useRemoveMember();
   const { setCurrentWorkspace } = useWorkspaceStore();
+  const { openCreateWorkspace } = useUiStore();
 
   function handleSelect(workspace) {
     setCurrentWorkspace(workspace);
@@ -59,7 +59,7 @@ export default function WorkspacesPage() {
       title="Workspaces"
       description="Manage your workspaces and teams"
       action={
-        <Button onClick={() => setShowCreate(true)}>
+        <Button onClick={openCreateWorkspace}>
           <Plus className="mr-2 h-4 w-4" />
           New workspace
         </Button>
@@ -70,7 +70,7 @@ export default function WorkspacesPage() {
           title="No workspaces yet"
           description="Create your first workspace to start collaborating"
           action={
-            <Button onClick={() => setShowCreate(true)}>
+            <Button onClick={openCreateWorkspace}>
               <Plus className="mr-2 h-4 w-4" />
               Create workspace
             </Button>
@@ -92,11 +92,6 @@ export default function WorkspacesPage() {
           ))}
         </div>
       )}
-
-      <CreateWorkspaceModal
-        open={showCreate}
-        onClose={() => setShowCreate(false)}
-      />
 
       {/* Delete Workspace Dialog */}
       <ConfirmDialog

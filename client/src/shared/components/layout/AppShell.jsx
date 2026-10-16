@@ -6,9 +6,16 @@ import { useUiStore } from '../../../core/store/uiStore.js';
 import { useWorkspaceStore } from '../../../core/store/workspaceStore.js';
 import { useWorkspaceSocket } from '../../../core/hooks/useWorkspaceSocket.js';
 import { useWorkspaces } from '../../../features/workspace/hooks/useWorkspaceQueries.js';
+import { CreateWorkspaceModal } from '../../../features/workspace/components/CreateWorkspaceModal.jsx';
 
 export function AppShell() {
-  const { isSidebarOpen, toggleSidebar, closeSidebar } = useUiStore();
+  const {
+    isSidebarOpen,
+    toggleSidebar,
+    closeSidebar,
+    isCreateWorkspaceOpen,
+    closeCreateWorkspace,
+  } = useUiStore();
   const { currentWorkspace, setCurrentWorkspace } = useWorkspaceStore();
   const { data: workspaces } = useWorkspaces();
   const [isMobile, setIsMobile] = useState(false);
@@ -52,6 +59,11 @@ export function AppShell() {
           <Outlet />
         </main>
       </div>
+
+      <CreateWorkspaceModal
+        open={isCreateWorkspaceOpen}
+        onClose={closeCreateWorkspace}
+      />
     </div>
   );
 }
