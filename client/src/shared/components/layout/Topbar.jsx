@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Menu, Search, WifiOff } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, Search, WifiOff, Building2, Plus } from 'lucide-react';
 import { useUiStore } from '../../../core/store/uiStore.js';
 import { useAuthStore } from '../../../core/store/authStore.js';
 import { useLogout } from '../../../features/auth/hooks/useAuthMutations.js';
@@ -24,7 +25,8 @@ import { NotificationPanel } from '../../../features/notifications/components/No
 import { CommandSearch } from '../../../features/search/components/CommandSearch.jsx';
 
 export function Topbar() {
-  const { toggleSidebar } = useUiStore();
+  const navigate = useNavigate();
+  const { toggleSidebar, openCreateWorkspace } = useUiStore();
   const { user } = useAuthStore();
   const { mutate: logout } = useLogout();
   const { isConnected } = useSocket();
@@ -97,6 +99,21 @@ export function Topbar() {
                   </p>
                 </div>
               </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => navigate("/workspaces")}
+              >
+                <Building2 className="mr-2 h-4 w-4" />
+                Workspaces
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => openCreateWorkspace()}
+              >
+                <Plus className="mr-2 h-4 w-4" />
+                New workspace
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="text-destructive focus:text-destructive cursor-pointer"

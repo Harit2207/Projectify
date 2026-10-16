@@ -9,7 +9,6 @@ export const useUiStore = create((set) => ({
   closeSidebar: () => set({ isSidebarOpen: false }),
   openSidebar: () => set({ isSidebarOpen: true }),
 
-  openCreateWorkspace: () =>
-    set({ isCreateWorkspaceOpen: true, isSidebarOpen: false }),
+  openCreateWorkspace: () => set({ isCreateWorkspaceOpen: true }),
   closeCreateWorkspace: () => set({ isCreateWorkspaceOpen: false }),
 }));

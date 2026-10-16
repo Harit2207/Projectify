@@ -18,7 +18,7 @@ export function WorkspaceSwitcher() {
 
   const { data: workspaces } = useWorkspaces();
   const { currentWorkspace, setCurrentWorkspace } = useWorkspaceStore();
-  const { openCreateWorkspace } = useUiStore();
+  const { openCreateWorkspace, closeSidebar } = useUiStore();
 
   function handleSelect(workspace) {
     setCurrentWorkspace(workspace);
@@ -26,9 +26,18 @@ export function WorkspaceSwitcher() {
     navigate(`/workspace/${workspace._id}/projects`);
   }
 
-  function handleCreateClick() {
+  function handleCreateClick(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setOpen(false);
-    openCreateWorkspace();
+    if (window.innerWidth < 768) {
+      closeSidebar();
+    }
+    setTimeout(() => {
+      openCreateWorkspace();
+    }, 120);
   }
 
   const currentId =
@@ -84,7 +93,6 @@ export function WorkspaceSwitcher() {
 
         <button
           type="button"
-          onPointerDown={(e) => e.stopPropagation()}
           onClick={handleCreateClick}
           className="w-full flex items-center gap-2 px-2 py-1.5 text-sm rounded hover:bg-accent transition-colors text-left text-muted-foreground cursor-pointer"
         >

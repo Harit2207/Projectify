@@ -104,8 +104,26 @@ export function Sidebar({ isMobile }) {
 
       {/* Workspace switcher */}
       {isSidebarOpen && (
-        <div className="px-2 py-2 border-b">
-          <WorkspaceSwitcher />
+        <div className="px-2 py-2 border-b flex items-center gap-1">
+          <div className="flex-1 min-w-0">
+            <WorkspaceSwitcher />
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 flex-shrink-0 text-muted-foreground hover:text-foreground"
+            title="Create workspace"
+            onClick={() => {
+              if (isMobile) {
+                useUiStore.getState().closeSidebar();
+              }
+              setTimeout(() => {
+                useUiStore.getState().openCreateWorkspace();
+              }, 120);
+            }}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
         </div>
       )}
 

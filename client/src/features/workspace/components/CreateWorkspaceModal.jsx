@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -31,6 +32,13 @@ export function CreateWorkspaceModal({ open, onClose }) {
   const navigate = useNavigate();
   const { closeSidebar } = useUiStore();
   const { mutate: create, isPending } = useCreateWorkspace();
+  const openedAtRef = useRef(0);
+
+  useEffect(() => {
+    if (open) {
+      openedAtRef.current = Date.now();
+    }
+  }, [open]);
 
   const {
     register,
@@ -58,12 +66,25 @@ export function CreateWorkspaceModal({ open, onClose }) {
       open={open}
       onOpenChange={(o) => {
         if (!o) {
+          if (Date.now() - openedAtRef.current < 350) return;
           reset();
           onClose();
         }
       }}
     >
-      <DialogContent className="sm:max-w-md">
+      <DialogContent
+        className="sm:max-w-md"
+        onPointerDownOutside={(e) => {
+          if (Date.now() - openedAtRef.current < 350) {
+            e.preventDefault();
+          }
+        }}
+        onInteractOutside={(e) => {
+          if (Date.now() - openedAtRef.current < 350) {
+            e.preventDefault();
+          }
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Create workspace</DialogTitle>
           <DialogDescription>
