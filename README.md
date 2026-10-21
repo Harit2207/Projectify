@@ -8,7 +8,7 @@
 
 **A production-grade multi-tenant project management platform with real-time collaboration, asynchronous email queues, and role-based permissions.**
 
-Built by **[Harit Gevariya](https://github.com/Harit2207)**
+Built by **[Harit Gevariya](https://github.com/Harit2207) & Hardeepsinh Rana**
 
 <br/>
 
@@ -511,9 +511,9 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
-**Harit Gevariya**
+**Harit Gevariya & Hardeepsinh Rana**
 
 - **GitHub:** [@Harit2207](https://github.com/Harit2207)
 - **Repository:** [Projectify](https://github.com/Harit2207/Projectify)

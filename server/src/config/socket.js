@@ -10,7 +10,12 @@ let io;
 export function initSocket(httpServer) {
   io = new Server(httpServer, {
     cors: {
-      origin: env.clientUrl,
+      origin: [
+        env.clientUrl ? env.clientUrl.replace(/\/+$/, '') : null,
+        'https://projectify-steel.vercel.app',
+        'http://localhost:5173',
+        'http://localhost:3000',
+      ].filter(Boolean),
       credentials: true,
     },
     pingInterval: 25000,
